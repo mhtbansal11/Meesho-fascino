@@ -1,0 +1,32 @@
+/* .search-container {
+  width: 280px;
+  display: flex;
+  flex-direction: column;
+} */
+
+.dropdown {
+    background-color: white;
+    display: flex;
+    width: 400px;
+    flex-direction: column;
+    /* border: 6px solid violet; */
+  }
+  
+  .dropdown:empty {
+    border: none;
+  }
+  
+  .dropdown-row {
+    cursor: pointer;
+    text-align: start;
+    margin: 2px 0;
+  }
+  
+  input {
+    width: 300px;
+    color: black;
+  }
+  
+  .search-inner {
+    display: flex;
+  }
