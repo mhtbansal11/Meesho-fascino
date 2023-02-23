@@ -6,9 +6,7 @@ import { AdminNavbar } from '../Components/AdminNavbar'
 export const AdminPage = () => {
   return (
     <div>
-      
-        <AdminNavbar/>
-       
+      <AdminNavbar />
     </div>
   )
 }

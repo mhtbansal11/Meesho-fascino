@@ -1,6 +1,6 @@
 import React from 'react'
 import { Grid, GridItem } from '@chakra-ui/react'
-import { Sidebar } from './Sidebar'
+import { Sidebar } from './AdminSidebar'
 
 import { AllRoutes } from '../routes/AllRoutes'
 export const AdminNavbar = () => {
@@ -16,13 +16,13 @@ export const AdminNavbar = () => {
   color='blackAlpha'
   fontWeight='bold'
 >
-  <GridItem  pl='2' bg='pink'  area={'header'}>
+  <GridItem zIndex={'999'}  position={'sticky'}   top='0' pl='2' bg='pink'  area={'header'}>
     navbar
   </GridItem>
-  <GridItem pl='2' bg='' area={'nav'}>
+  <GridItem position={'fixed'}  top={'70px'} zIndex='1' pl='2'  area={'nav'}>
     <Sidebar/>
   </GridItem>
-  <GridItem pl='2' bg='green' area={'main'}>
+  <GridItem pl='2' bg='' area={'main'}>
   <AllRoutes/>
   </GridItem>
   
