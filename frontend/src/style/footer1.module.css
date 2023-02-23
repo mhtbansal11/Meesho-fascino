@@ -1,7 +1,6 @@
 html {
   font-size: 62.5px;
 }
-
 .outerBox {
   display: grid;
   grid-template-columns: 31% 28% 15% 18%;

@@ -1,61 +1,116 @@
-// import google from "../images/google.png";
-// import Appstore from "../images/Appstore.png";
-// import facebook from "../images/facebook.png";
-// import instagram from "../images/instagram.png";
-// import yt from "../images/youtube.png";
-// import linkedin from "../images/linkedin.png";
-// import twitter from "../images/twitter.png";
-import style from "../style/footer1.module.css";
+import {
+  Button,
+  ButtonGroup,
+  Heading,
+  ListItem,
+  Text,
+  UnorderedList,
+} from "@chakra-ui/react";
+import React from "react";
 
-export default function Footer() {
+const Footer = () => {
   return (
-    <div className={style.outerBox}>
-      <div className={style.first}>
-        <h1>Shop Non-Stop on Meesho</h1>
-        <p>
-          Trusted by more than 1 Crore Indians Cash on Delivery | Free Delivery
-        </p>
-        <div className={style.img_box1}>
-          <div>
-            <img src={"google"} alt="google" />
-          </div>
-          <div style={{ marginBottom: "10px" }}>
-            <img src={"Appstore"} alt="appStore" />
-          </div>
-        </div>
-      </div>
-      <div className={style.second}>
-        <div className={style.list}>
-          <li>Careers</li>
-          <li>Become a supplier</li>
-          <li> Hall of Fame</li>
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "space-between",
+        gap: "20px",
+        width: "95%",
+        margin: "auto",
+        marginBottom: "3%",
+        background: "#f9f9f9",
+        padding: "20px",
+      }}
+    >
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          gap: "5px",
+          width: "57%",
+        }}
+      >
+        <div>
+          <Heading marginBottom={"30px"} size="md">
+            Living room Sofa
+          </Heading>
+          <Text marginBottom={"30px"}>This sofa is perfect for</Text>
+          <ButtonGroup spacing="2">
+            <Button variant="solid" colorScheme="blue">
+              Buy now
+            </Button>
+            <Button variant="ghost" colorScheme="blue">
+              Add to cart
+            </Button>
+          </ButtonGroup>
         </div>
         <div>
-          <li>Legal and Policies</li>
-          <li>WishKart Tech Blog</li>
-          <li>Notices and Returns</li>
+          <UnorderedList>
+            <ListItem>Careers</ListItem>
+            <ListItem>Become a supplier</ListItem>
+            <ListItem>Hall of Fame</ListItem>
+          </UnorderedList>
+        </div>
+        <div>
+          <UnorderedList>
+            <ListItem>Legal and Policies</ListItem>
+            <ListItem>Meesho Tech Blog</ListItem>
+            <ListItem>Notices and Returns</ListItem>
+          </UnorderedList>
         </div>
       </div>
-
-      <div className={style.third}>
-        <h1>React out to us</h1>
-        <div className={style.img_box2}>
-          <img src={"facebook"} alt="fb" />
-          <img src={"instagram"} alt="insta" />
-          <img src={"yt"} alt="yt" />
-          <img src={"linkedin"} alt="linkedin" />
-          <img src={"twitter"} alt="twitter" />
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          gap: "35px",
+        }}
+      >
+        <div>
+          <Heading marginBottom={"30px"} size="md">
+            Reach to us
+          </Heading>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              gap: "10px",
+            }}
+          >
+            <img
+              src="https://images.meesho.com/images/pow/facebook.png"
+              alt=""
+            />
+            <img
+              src="https://images.meesho.com/images/pow/instagram.png"
+              alt=""
+            />
+            <img
+              src="https://images.meesho.com/images/pow/youtube.png"
+              alt=""
+            />
+            <img
+              src="https://images.meesho.com/images/pow/linkedin.png"
+              alt=""
+            />
+            <img
+              src="https://images.meesho.com/images/pow/twitter.png"
+              alt=""
+            />
+          </div>
         </div>
-      </div>
-      <div className={style.fourth}>
-        <h1>Contact Us</h1>
-        <p>
-          Fashnear Technologies Private Limited, CIN: U74900KA2015PTC082263
-          06-105-B, 06-102, (138 Wu) Vaishnavi Signature, No. 78/9, Outer Ring
-          Road, Bellandur, Varthur Hobli, Bengaluru-560103, Karnataka, India
-          E-mail address: query@meesho.com © 2015-2022 Meesho.com
-        </p>
+        <div>
+          <Heading size="md">Contact Us</Heading>
+          <Text width={"300px"}>
+            Fashnear Technologies Private Limited, CIN: U74900KA2015PTC082263
+            06-105-B, 06-102, (138 Wu) Vaishnavi Signature, No. 78/9, Outer Ring
+            Road, Bellandur, Varthur Hobli, Bengaluru-560103, Karnataka, India
+            E-mail address: query@meesho.com © 2015-2022 Meesho.com
+          </Text>
+        </div>
       </div>
     </div>
   );
-}
+};
+
+export default Footer;

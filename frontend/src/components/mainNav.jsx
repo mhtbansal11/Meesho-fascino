@@ -11,7 +11,6 @@ import {
   PopoverTrigger,
   PopoverContent,
   useColorModeValue,
-  useBreakpointValue,
   useDisclosure,
 } from "@chakra-ui/react";
 import {
@@ -21,18 +20,20 @@ import {
   ChevronRightIcon,
 } from "@chakra-ui/icons";
 
-export default function MegaMenu() {
+export default function WithSubnavigation() {
   const { isOpen, onToggle } = useDisclosure();
 
   return (
     <Box>
       <Flex
+        bg={useColorModeValue("white", "gray.800")}
         color={useColorModeValue("gray.600", "white")}
         minH={"60px"}
         py={{ base: 2 }}
         px={{ base: 4 }}
         borderBottom={1}
         borderStyle={"solid"}
+        borderColor={useColorModeValue("gray.200", "gray.900")}
         align={"center"}
       >
         <Flex
@@ -49,19 +50,10 @@ export default function MegaMenu() {
             aria-label={"Toggle Navigation"}
           />
         </Flex>
-        <Flex flex={{ base: 1 }} justify={{ base: "center", md: "start" }}>
-          <Text
-            textAlign={useBreakpointValue({ base: "center", md: "left" })}
-            fontFamily={"heading"}
-            color={useColorModeValue("gray.800", "white")}
-          ></Text>
-
-          <Flex display={{ base: "none", md: "flex" }} ml={10}>
-            <DesktopNav />
-          </Flex>
+        <Flex display={{ base: "none", md: "flex" }} ml={10}>
+          <DesktopNav />
         </Flex>
       </Flex>
-
       <Collapse in={isOpen} animateOpacity>
         <MobileNav />
       </Collapse>
@@ -70,8 +62,10 @@ export default function MegaMenu() {
 }
 
 const DesktopNav = () => {
-  const linkColor = useColorModeValue("black", "black");
-  const linkHoverColor = useColorModeValue("#f43397", "black");
+  const linkColor = useColorModeValue("gray.600", "gray.200");
+  const linkHoverColor = useColorModeValue("gray.800", "white");
+  const popoverContentBgColor = useColorModeValue("white", "gray.800");
+
   return (
     <Stack direction={"row"} spacing={4}>
       {NAV_ITEMS.map((navItem) => (
@@ -79,15 +73,13 @@ const DesktopNav = () => {
           <Popover trigger={"hover"} placement={"bottom-start"}>
             <PopoverTrigger>
               <Link
-                p={4}
+                p={2}
                 href={navItem.href ?? "#"}
-                // borderRadius={"8px 8px 0px 0px"}
-                fontSize={["5px", "10px", "16px"]}
+                fontSize={"sm"}
                 fontWeight={500}
-                h={"100%"}
                 color={linkColor}
                 _hover={{
-                  textDecoration: "underline",
+                  textDecoration: "none",
                   color: linkHoverColor,
                 }}
               >
@@ -97,19 +89,18 @@ const DesktopNav = () => {
 
             {navItem.children && (
               <PopoverContent
+                border={0}
                 boxShadow={"xl"}
+                bg={popoverContentBgColor}
                 p={4}
-                bg={"white"}
-                display={"flex"}
                 rounded={"xl"}
-                minW={"2xl"}
-                minH={"400px"}
+                minW={"sm"}
               >
-                <Flex>
+                <Stack>
                   {navItem.children.map((child) => (
                     <DesktopSubNav key={child.label} {...child} />
                   ))}
-                </Flex>
+                </Stack>
               </PopoverContent>
             )}
           </Popover>
@@ -133,8 +124,7 @@ const DesktopSubNav = ({ label, href, subLabel }) => {
         <Box>
           <Text
             transition={"all .3s ease"}
-            color={"#f43397"}
-            fontSize={["5px", "10px", "16px"]}
+            _groupHover={{ color: "pink.400" }}
             fontWeight={500}
           >
             {label}
@@ -150,7 +140,7 @@ const DesktopSubNav = ({ label, href, subLabel }) => {
           align={"center"}
           flex={1}
         >
-          <Icon w={5} h={5} as={ChevronRightIcon} />
+          <Icon color={"pink.400"} w={5} h={5} as={ChevronRightIcon} />
         </Flex>
       </Stack>
     </Link>
@@ -159,7 +149,11 @@ const DesktopSubNav = ({ label, href, subLabel }) => {
 
 const MobileNav = () => {
   return (
-    <Stack p={4} display={{ md: "none" }}>
+    <Stack
+      bg={useColorModeValue("white", "gray.800")}
+      p={4}
+      display={{ md: "none" }}
+    >
       {NAV_ITEMS.map((navItem) => (
         <MobileNavItem key={navItem.label} {...navItem} />
       ))}
@@ -182,7 +176,10 @@ const MobileNavItem = ({ label, children, href }) => {
           textDecoration: "none",
         }}
       >
-        <Text fontWeight={600} color={useColorModeValue("black", "black")}>
+        <Text
+          fontWeight={600}
+          color={useColorModeValue("gray.600", "gray.200")}
+        >
           {label}
         </Text>
         {children && (
@@ -202,6 +199,7 @@ const MobileNavItem = ({ label, children, href }) => {
           pl={4}
           borderLeft={1}
           borderStyle={"solid"}
+          borderColor={useColorModeValue("gray.200", "gray.700")}
           align={"start"}
         >
           {children &&
@@ -301,24 +299,14 @@ const NAV_ITEMS = [
         href: "#",
       },
       {
-        label: "",
-        subLabel: "An exclusive list for contract work",
-        href: "#",
-      },
-      {
-        label: "",
-        subLabel: "An exclusive list for contract work",
-        href: "#",
-      },
-      {
-        label: "",
+        label: "Freelance Projects",
         subLabel: "An exclusive list for contract work",
         href: "#",
       },
     ],
   },
   {
-    label: "Bags & Footwear",
+    label: "Jewellery & Accessories",
     children: [
       {
         label: "Job Board",
@@ -333,7 +321,7 @@ const NAV_ITEMS = [
     ],
   },
   {
-    label: "Jewellery & Accessories",
+    label: "Bags & Footwear",
     children: [
       {
         label: "Job Board",
