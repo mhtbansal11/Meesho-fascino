@@ -5,7 +5,6 @@ const {auth} = require("./middleware/auth.middleware");
 const {connecion}= require("./config/db")
 const {userRouter} = require("./routes/User.route");
 const {adminRouter} = require("./routes/Admin.route");
-const {productRouter} = require("./routes/Products.route");
 const { ProductModel } = require("./model/Product.model");
 const { UserModel } = require("./model/User.model");
 const jwt = require("jsonwebtoken");

@@ -8,8 +8,8 @@ const { OrderModel } = require("../model/order.model");
 
 const userRouter= express.Router();
 
-// below code can be used to get all products by using filter in user site---------------->
-app.get("/products/filter",async(req,res)=>{
+//below code can be used to get all products by using filter in user site---------------->
+userRouter.get("/products/filter",async(req,res)=>{
     const query= req.query;
     const userID = req.body.userID;
     let products;
@@ -54,7 +54,7 @@ app.get("/products/filter",async(req,res)=>{
         else{
              products = await ProductModel.find({userID:userID});
         }
-       } 
+    } 
         
        
         res.send(products);
@@ -65,7 +65,7 @@ app.get("/products/filter",async(req,res)=>{
 
 
 // below code can be used to get all products By using sorting function in user site---------------->
-app.get("/products/sort",async(req,res)=>{
+userRouter.get("/products/sort",async(req,res)=>{
     let query= req.query;
     
     try{
