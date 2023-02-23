@@ -1,0 +1,222 @@
+#div1{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    justify-items: center;
+    gap: 5rem;
+    width: 90vw;
+    height: 55vh;
+    margin: auto;
+    margin-bottom: 2rem;
+}
+
+#playStoreButton>a{
+    margin-top: 1rem;
+    display: flex;
+    width: 30vw;
+    background-color: palevioletred;
+}
+
+#a>div>p{
+    font-size: 2.2rem;
+    font-weight: bolder;
+    color: rgb(78, 61, 61);
+}
+#playStoreButton>a>div>img{
+    width: 150px;
+    height: 90px;
+}
+#playStoreButton>a>div:last-child {
+    text-align: center;
+    padding: 1rem ;
+    font-size: 22px;
+    color: white;
+    font-weight: bold;
+}
+
+#text{
+    display: inline-block;
+    text-align: center;
+    width: 60vw;
+    /* bord */
+    border-top:2px solid grey ;
+    border-bottom:2px solid grey ;
+    font-size: 2rem;
+    font-weight: bolder;
+    color: rgb(56, 44, 44);
+    margin-bottom: 2rem;
+}
+
+.last>div>h1{
+    font-size: 26px;
+    margin-bottom: 2%;
+}
+#div2{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+    width: 90vw;
+    height: 69vh;
+    margin: auto;
+    background-image: url("https://www.wallpaperup.com/uploads/wallpapers/2016/09/22/1019128/43dbadb7f82d305bdf6b393502cc1794-700.jpg");
+}
+#rightDiv2{
+    display: block;
+}
+#single{
+    
+    font-size: 4rem;
+    padding: 1rem 0;
+    font-weight: bolder;
+    margin-bottom: rem;
+    /* border: 1px solid red; */
+    text-align: center;
+    font-family: 'Dancing Script', cursive;
+}
+/* #double , #leftDiv2{
+    cursor: pointer;
+} */
+#double{
+    display: flex;
+    justify-content: space-between;
+    gap: 60px;
+}
+
+/* homecare */
+
+#homecare {
+            background-image: url(https://dekoracjadomu.b-cdn.net/349531/lustro-scienne-laya-z-trawy-morskiej.jpg);
+            width: 90vw;
+            height: 100vh;
+            margin: auto;
+            margin-top: 3rem ;
+            border-radius: 5px;
+        }
+
+        #homecare h1 {
+            font-size: 3.5rem;
+            font-weight: bolder;
+            
+            color: teal;
+            
+        }
+
+        #homecare>div {
+            padding: 80px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: 200px 100px 100px 100px;
+            flex-wrap: wrap;
+            /* border: 1px solid rgb(14, 13, 13); */
+        }
+
+        #homecare img {
+            cursor: pointer;
+            margin-left: 2rem;
+            width: 200px;
+            border: 8px solid rgb(205, 237, 222);
+        }
+
+        #homecare button {
+            cursor: pointer;
+            margin: 8px;
+            font-weight: 800;
+            color: teal;
+            width: 150px;
+            height: 50px;
+            border-radius: 3px;
+            border: none;
+            margin-left: 75px;
+            font-family: -apple-system, 'Open Sans', 'Helvetica Neue', sans-serif, 'Mier Book';
+            font-size: 18px;
+        }
+
+        /* .reseller */
+        .reseller {
+            background-image: url(https://images.meesho.com/images/pow/downloadBannerDesktop.webp);
+            width: 90vw;
+            background-color: rgb(252, 222, 236);
+            height: 70vh;
+            margin: auto;
+            margin-top: 3rem;
+            border-radius: 5px;
+        }
+
+        .reseller .android {
+            flex-wrap: wrap;
+            margin-left: 320px;
+            margin-top: 199px;
+            padding-left: 300px;
+            /* border: 1px solid red; */
+        }
+
+        .android img {
+            height: 50px;
+            width: auto;
+            border: none;
+        }
+
+        .reseller h1 {
+            color: rgb(244, 51, 151);
+            margin: 50px;
+            font-size: 50px;
+            /* border: 1px solid red; */
+            text-align: right;
+            width: auto;
+        }
+
+        .reseller h2 {
+            color: rgb(70, 70, 253);
+            margin-top: 50px;
+            margin: 50px;
+            font-size: 30px;
+            /* border: 1px solid red; */
+            text-align: right;
+            width: auto;
+        }
+            
+        .btn1{
+            background: red;
+
+        }
+        /* .last */
+        .last {
+            background-image: url(https://images.meesho.com/images/pow/supplyBannerDesktop.webp);
+            width: 90vw;
+            height: 50vh;
+            margin: auto;
+            margin-top: 3rem;
+            border-radius: 5px;
+            color: #fff;
+            margin-bottom: 4%;
+        }
+
+        .logo1{
+            /* display: flex; */
+            width: 70vh;
+            justify-content: space-between;
+            gap: 20px;
+        }
+        .last>div {
+            /* color: #fff; */
+            margin-left: 50px;
+            /* margin: auto; */
+            padding: 3px;
+            /* border: 1px solid red; */
+        }
+
+        .last img {
+            margin-left: -15px;
+            color: white;
+            height: 20px;
+            border: none;
+        }
+
+        .last button {
+            color: white;
+            padding: 1rem 2rem;
+            margin: 1rem 0 0 3rem;
+            font-weight: bold;
+            background: blue;
+            border: none;
+            border-radius: 5px;
+        }

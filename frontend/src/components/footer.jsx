@@ -2,6 +2,7 @@ import {
   Button,
   ButtonGroup,
   Heading,
+  Link,
   ListItem,
   Text,
   UnorderedList,
@@ -37,10 +38,10 @@ const Footer = () => {
           <Text marginBottom={"30px"}>This sofa is perfect for</Text>
           <ButtonGroup spacing="2">
             <Button variant="solid" colorScheme="blue">
-              Buy now
+              <Link>Play Store</Link>
             </Button>
-            <Button variant="ghost" colorScheme="blue">
-              Add to cart
+            <Button variant="solid" colorScheme="blue">
+              <Link textDecoration={"none"}>Apple Store</Link>
             </Button>
           </ButtonGroup>
         </div>

@@ -115,6 +115,8 @@ export default function Nav() {
                   <br />
                   <MenuDivider />
                   <MenuItem>My Orders</MenuItem>
+                  <MenuItem>Delete Account</MenuItem>
+                  <MenuItem>My Orders</MenuItem>
                   <MenuItem>Logout</MenuItem>
                 </MenuList>
               </Menu>
