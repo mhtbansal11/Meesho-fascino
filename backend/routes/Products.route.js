@@ -4,7 +4,7 @@ const {ProductModel}= require("../model/Product.model");
 const productRouter= express.Router();
 
 // below code can be used to add the product through admin---------------->
-productRouter.post("/add",async(req,res)=>{
+productRouter.post("product/add",async(req,res)=>{
     try{
         const product = new ProductModel(req.body);
         await product.save();
@@ -15,7 +15,7 @@ productRouter.post("/add",async(req,res)=>{
 })
 
 // below code can be used to update the product through admin--------------->
-productRouter.patch("/update/:id",async(req,res)=>{
+productRouter.patch("product/update/:id",async(req,res)=>{
     const ID= req.params.id;
     const payload= req.body;
     try{
@@ -27,7 +27,7 @@ productRouter.patch("/update/:id",async(req,res)=>{
 })
 
 // below code can be used to delete the product through admin--------------->
-productRouter.delete("/delete/:id",async(req,res)=>{
+productRouter.delete("product/delete/:id",async(req,res)=>{
     const ID= req.params.id;
     try{
         await ProductModel.findByIdAndDelete({_id:ID});

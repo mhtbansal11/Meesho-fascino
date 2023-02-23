@@ -21,8 +21,13 @@ app.use("/admin",auth);
 app.use("/admin",adminRouter);
 
 
+// Homepage---------------->
+app.get("/",(req,res)=>{
+    res.send("HOME PAGE")
+})
+
 // below code can be used to get all products for Home-Page in user site---------------->
-app.get("/",async(req,res)=>{
+app.get("/products",async(req,res)=>{
     let query= req.query;
     try{
         const products = await ProductModel.find(query);
@@ -70,10 +75,9 @@ app.post("/login",async(req,res)=>{
 app.post("/insert",async(req,res)=>{
     try{
         await ProductModel.insertMany(req.body);
-        await user.save();
-        res.send({"msg":"You have been registered successfully"})
+        res.send({"msg":"Products have been added successfully"})
     }catch(err){
-        res.send({"msg":"somthing went wrong! cannot register","error":err.message})
+        res.send({"msg":"somthing went wrong! cannot add the products","error":err.message})
     }
 })
 

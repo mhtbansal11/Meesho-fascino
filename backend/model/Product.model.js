@@ -1,13 +1,17 @@
 const mongoose= require("mongoose");
 
 const productSchema= mongoose.Schema({
-    name:{type:String,required:true},
-    category:{type:String,required:true},
-    color:{type:String,required:true},
-    image:{type:String,required:true},
-    price:{type:Number,required:true},
-    material:{type:String,required:false},
-    rating:{type:Number,required:false}
+    "type": String,
+    "category":String,
+    "brand": String,
+    "title": String,
+    "discounted_price": Number,
+    "strike_price": Number,
+    "discount": String,
+    "images": Array,
+    "size": Array,
+    "rating": Number,
+    "rating_count": String
 },{
     versionKey:false
 });
