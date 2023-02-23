@@ -15,7 +15,7 @@ const jwt = require("jsonwebtoken");
 const app= express();
 app.use(express.json());
 app.use(cors());
-app.use("/",productRouter);
+app.use("/users",auth);
 app.use("/users",userRouter);
 app.use("/admin",auth);
 app.use("/admin",adminRouter);
@@ -54,9 +54,10 @@ app.post("/login",async(req,res)=>{
     try{
         const user = await UserModel.findOne({email});
         if(user){
-            bcrypt.compare(password,user.password,(err,result)=>{
+            bcrypt.compare(password,user.password,async(err,result)=>{
                 if(result){
                     let token =jwt.sign({userID:user._id},"masai");
+                    await UserModel.findByIdAndUpdate({_id:user._id},{is_active:true})
                     res.send({"msg":"Login Successfull","token":token})
                 }else{
                     res.send({"msg":"Wrong Credentials"})

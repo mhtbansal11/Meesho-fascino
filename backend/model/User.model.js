@@ -7,7 +7,8 @@ const userSchema= mongoose.Schema({
     password:{type:String,required:true},
     mobile:{type:Number,required:true},
     city:{type:String,required:true},
-    isadmin:{type:Boolean,required:false}
+    is_admin:{type:Boolean,required:false},
+    is_active:{type:Boolean,required:false},
 },{
     versionKey:false
 });
