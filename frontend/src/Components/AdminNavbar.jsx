@@ -3,8 +3,10 @@ import { Grid, GridItem } from '@chakra-ui/react'
 import { Sidebar } from './AdminSidebar'
 
 import { AllRoutes } from '../routes/AllRoutes'
+import { AdminTop } from './AdminTop'
 export const AdminNavbar = () => {
   return (
+
     <Grid
   templateAreas={`"header header"
                   "nav main"
@@ -16,8 +18,9 @@ export const AdminNavbar = () => {
   color='blackAlpha'
   fontWeight='bold'
 >
-  <GridItem zIndex={'999'}  position={'sticky'}   top='0' pl='2' bg='pink'  area={'header'}>
-    navbar
+  
+  <GridItem zIndex={'999'} width='100%'  position={'fixed'}   top='0' pl='2' bg='pink'  area={'header'}>
+  <AdminTop/>
   </GridItem>
   <GridItem position={'fixed'}  top={'70px'} zIndex='1' pl='2'  area={'nav'}>
     <Sidebar/>

@@ -23,7 +23,7 @@ export const Products = () => {
 
     return (
         <Box>
-           <Box zIndex={'999'} textAlign={'left'} p={'0px 15px'} color={'white'} position={'sticky'} top='70px' bg='grey' gap='6' display={'flex'}>
+           <Box zIndex={'999'} textAlign={'left'} p={'0px 15px'} color={'white'} w='100%' position={'fixed'} top='64px' bg='grey' gap='6' display={'flex'}>
            <Box  w='80px'>
                     Image
                 </Box>
