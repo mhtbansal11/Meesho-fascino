@@ -8,6 +8,7 @@ const {adminRouter} = require("./routes/Admin.route");
 const { ProductModel } = require("./model/Product.model");
 const { UserModel } = require("./model/User.model");
 const jwt = require("jsonwebtoken");
+const bcrypt= require("bcrypt")
 
 
 
@@ -38,10 +39,18 @@ app.get("/products",async(req,res)=>{
 
 // below code can be used to register by users in user site---------------->
 app.post("/register",async(req,res)=>{
+    const payload=req.body;
+    const {password}= payload;
     try{
-        const user = new UserModel(req.body);
-        await user.save();
-        res.send({"msg":"You have been registered successfully"})
+        bcrypt.hash(password,5,async(err,hash)=>{
+            if(err){
+                res.send({"msg":"somthing went wrong while hashing password"})
+            }else{
+                const user = new UserModel({...payload,password:hash});
+                await user.save();
+                res.send({"msg":"You have been registered successfully"})
+            }
+        })
     }catch(err){
         res.send({"msg":"somthing went wrong! cannot register","error":err.message})
     }

@@ -16,14 +16,73 @@ userRouter.get("/products/filter",async(req,res)=>{
     try{
         //You can use pagination by passing query as skip and limit------------------------->
     if(query.limit && query.skip){
+        // If you want to sort data in ascending order according to price , pass "asc" as a query-------------------------------------->
+      if(query.asc){
+        if(query.brand  && query.category && query.type){
+            products = await ProductModel.find({$and:[{brand:query.brand},{category:query.category},{type:query.type}]}).skip(query.skip).limit(query.limit).sort({price:1});
+        }
+        else if(query.brand && query.category){
+            products = await ProductModel.find({$and:[{brand:query.brand},{category:query.category}]}).skip(query.skip).limit(query.limit).sort({price:1});
+        }
+        else if(query.type && query.brand){
+            products = await ProductModel.find({$and:[{brand:query.brand},{type:query.type}]}).skip(query.skip).limit(query.limit).sort({price:1});
+        }
+        else if(query.type && query.category){
+            products = await ProductModel.find({$and:[{type:query.type},{category:query.category}]}).skip(query.skip).limit(query.limit).sort({price:1});
+        }
+        else if(query.type){
+            products = await ProductModel.find({type:query.type}).skip(query.skip).limit(query.limit).sort({price:1});
+        }
+        else if(query.brand){
+            products = await ProductModel.find({brand:query.brand}).skip(query.skip).limit(query.limit).sort({price:1});
+        }
+        else if(query.category){
+            products = await ProductModel.find({category:query.category}).skip(query.skip).limit(query.limit).sort({price:1});
+        }
+        else{
+             products = await ProductModel.find().skip(query.skip).limit(query.limit).sort({price:1});
+        }
+        // If you want to sort data in descending order according to price , pass "des" as a query-------------------------------------->
+      }else if(query.des){
+        if(query.brand  && query.category && query.type){
+            products = await ProductModel.find({$and:[{brand:query.brand},{category:query.category},{type:query.type}]}).skip(query.skip).limit(query.limit).sort({price:-1});
+        }
+        else if(query.brand && query.category){
+            products = await ProductModel.find({$and:[{brand:query.brand},{category:query.category}]}).skip(query.skip).limit(query.limit).sort({price:-1});
+        }
+        else if(query.type && query.brand){
+            products = await ProductModel.find({$and:[{brand:query.brand},{type:query.type}]}).skip(query.skip).limit(query.limit).sort({price:-1});
+        }
+        else if(query.type && query.category){
+            products = await ProductModel.find({$and:[{type:query.type},{category:query.category}]}).skip(query.skip).limit(query.limit).sort({price:-1});
+        }
+        else if(query.type){
+            products = await ProductModel.find({type:query.type}).skip(query.skip).limit(query.limit).sort({price:-1});
+        }
+        else if(query.brand){
+            products = await ProductModel.find({brand:query.brand}).skip(query.skip).limit(query.limit).sort({price:-1});
+        }
+        else if(query.category){
+            products = await ProductModel.find({category:query.category}).skip(query.skip).limit(query.limit).sort({price:-1});
+        }
+        else{
+             products = await ProductModel.find().skip(query.skip).limit(query.limit).sort({price:-1});
+        }
+      }else{
         if(query.brand  && query.category && query.type){
             products = await ProductModel.find({$and:[{brand:query.brand},{category:query.category},{type:query.type}]}).skip(query.skip).limit(query.limit);
         }
         else if(query.brand && query.category){
             products = await ProductModel.find({$and:[{brand:query.brand},{category:query.category}]}).skip(query.skip).limit(query.limit);
         }
+        else if(query.type && query.brand){
+            products = await ProductModel.find({$and:[{brand:query.brand},{type:query.type}]}).skip(query.skip).limit(query.limit);
+        }
+        else if(query.type && query.category){
+            products = await ProductModel.find({$and:[{type:query.type},{category:query.category}]}).skip(query.skip).limit(query.limit);
+        }
         else if(query.type){
-            products = await ProductModel.find({type:query.type}).skip(query.skip).limit(query.limit);
+            products = await ProductModel.find({type:query.type}).skip(query.skip).limit(query.limit)
         }
         else if(query.brand){
             products = await ProductModel.find({brand:query.brand}).skip(query.skip).limit(query.limit);
@@ -32,31 +91,89 @@ userRouter.get("/products/filter",async(req,res)=>{
             products = await ProductModel.find({category:query.category}).skip(query.skip).limit(query.limit);
         }
         else{
-             products = await ProductModel.find({userID:userID}).skip(query.skip).limit(query.limit);
+             products = await ProductModel.find().skip(query.skip).limit(query.limit);
         }
+      }  
+        
          //If you are not using pagination no need to pass query as skip and limit---------------------------------->
     }else{
-        if(query.brand  && query.category && query.type){
-            products = await ProductModel.find({$and:[{brand:query.brand},{category:query.category},{type:query.type}]});
-        }
-        else if(query.brand && query.category){
-            products = await ProductModel.find({$and:[{brand:query.brand},{category:query.category}]});
-        }
-        else if(query.type){
-            products = await ProductModel.find({type:query.type});
-        }
-        else if(query.brand){
-            products = await ProductModel.find({brand:query.brand});
-        }
-        else if(query.category){
-            products = await ProductModel.find({category:query.category});
-        }
-        else{
-             products = await ProductModel.find({userID:userID});
-        }
-    } 
-        
-       
+        if(query.asc){
+            if(query.brand  && query.category && query.type){
+                products = await ProductModel.find({$and:[{brand:query.brand},{category:query.category},{type:query.type}]}).sort({price:1});
+            }
+            else if(query.brand && query.category){
+                products = await ProductModel.find({$and:[{brand:query.brand},{category:query.category}]}).sort({price:1});
+            }
+            else if(query.type && query.brand){
+                products = await ProductModel.find({$and:[{brand:query.brand},{type:query.type}]}).sort({price:1});
+            }
+            else if(query.type && query.category){
+                products = await ProductModel.find({$and:[{type:query.type},{category:query.category}]}).sort({price:1});
+            }
+            else if(query.type){
+                products = await ProductModel.find({type:query.type}).sort({price:1});
+            }
+            else if(query.brand){
+                products = await ProductModel.find({brand:query.brand}).sort({price:1});
+            }
+            else if(query.category){
+                products = await ProductModel.find({category:query.category}).sort({price:1});
+            }
+            else{
+                 products = await ProductModel.find().sort({price:1});
+            }
+          }else if(query.des){
+            if(query.brand  && query.category && query.type){
+                products = await ProductModel.find({$and:[{brand:query.brand},{category:query.category},{type:query.type}]}).sort({price:-1});
+            }
+            else if(query.brand && query.category){
+                products = await ProductModel.find({$and:[{brand:query.brand},{category:query.category}]}).sort({price:-1});
+            }
+            else if(query.type && query.brand){
+                products = await ProductModel.find({$and:[{brand:query.brand},{type:query.type}]}).sort({price:-1});
+            }
+            else if(query.type && query.category){
+                products = await ProductModel.find({$and:[{type:query.type},{category:query.category}]}).sort({price:-1});
+            }
+            else if(query.type){
+                products = await ProductModel.find({type:query.type}).sort({price:-1});
+            }
+            else if(query.brand){
+                products = await ProductModel.find({brand:query.brand}).sort({price:-1});
+            }
+            else if(query.category){
+                products = await ProductModel.find({category:query.category}).sort({price:-1});
+            }
+            else{
+                 products = await ProductModel.find().sort({price:-1});
+            }
+          }else{
+            if(query.brand  && query.category && query.type){
+                products = await ProductModel.find({$and:[{brand:query.brand},{category:query.category},{type:query.type}]});
+            }
+            else if(query.brand && query.category){
+                products = await ProductModel.find({$and:[{brand:query.brand},{category:query.category}]});
+            }
+            else if(query.type && query.brand){
+                products = await ProductModel.find({$and:[{brand:query.brand},{type:query.type}]});
+            }
+            else if(query.type && query.category){
+                products = await ProductModel.find({$and:[{type:query.type},{category:query.category}]});
+            }
+            else if(query.type){
+                products = await ProductModel.find({type:query.type})
+            }
+            else if(query.brand){
+                products = await ProductModel.find({brand:query.brand});
+            }
+            else if(query.category){
+                products = await ProductModel.find({category:query.category});
+            }
+            else{
+                 products = await ProductModel.find();
+            }
+          }
+    }    
         res.send(products);
     }catch(err){
         res.send({"msg":"cannot get products","error":err.message})
@@ -64,40 +181,12 @@ userRouter.get("/products/filter",async(req,res)=>{
 })
 
 
-// below code can be used to get all products By using sorting function in user site---------------->
-userRouter.get("/products/sort",async(req,res)=>{
-    let query= req.query;
-    
-    try{
-        if(query.sort=="asc"){
-         const products = await ProductModel.find.sort({price:1});
-         res.send(products)
-        }
-        else if(query.sort=="des"){
-            const products = await ProductModel.find.sort({price:-1});
-            res.send(products)
-        }   
-    }catch(err){
-        res.send({"msg":"somthing went wrong! cannot sort products","error":err.message})
-    }
-})
-
-
 // below code can be used to get all products which are added by users ---------------->
 userRouter.get("/cart_product",async(req,res)=>{
-    const userID=req.params.userID;
-    let allProducts=[];
+    const userID=req.body.userID;
     try{
-        const cart = await CartProductsModel.find({userID});
-        if(cart.length>0){
-            cart.forEach(async(el)=>{
-               const prod= await ProductModel.findOne({_id:el.productID}) ;
-               allProducts.push(prod);
-            })
-            res.send(allProducts);
-        }else{
-            res.send({"msg":"Cart is empty!"})
-        }
+        const cart = await CartProductsModel.find({userID}).populate("productID");
+        res.send(cart)
     }catch(err){
         res.send({"msg":"somthing went wrong! cannot Get cart Products","error":err.message})
     }
@@ -105,8 +194,9 @@ userRouter.get("/cart_product",async(req,res)=>{
 
 
 // below code can be used to add to cart by users ---------------->
-userRouter.post("/cart_product/:id",async(req,res)=>{
+userRouter.post("/cart_product/add/:id",async(req,res)=>{
     const productID=req.params.id
+    console.log({...req.body,productID,qty:1})
     try{
         const cart = new CartProductsModel({...req.body,productID,qty:1});
         await cart.save();
@@ -118,11 +208,11 @@ userRouter.post("/cart_product/:id",async(req,res)=>{
 
 
 // below code can be used to update quantity and size of the products by users---------------->
-userRouter.patch("/cart_product/:id",async(req,res)=>{
+userRouter.patch("/cart_product/update/:id",async(req,res)=>{
     const ID=req.params.id;
-    const payload=req.body;
+    const {qty}=req.body;
     try{
-        await CartProductsModel.findByIdAndUpdate({_id:ID},payload);
+        await CartProductsModel.findByIdAndUpdate({_id:ID},{qty});
         res.send({"msg":"Product has been updated"})
     }catch(err){
         res.send({"msg":"somthing went wrong! cannot update","error":err.message})
@@ -131,7 +221,7 @@ userRouter.patch("/cart_product/:id",async(req,res)=>{
 
 
 // below code can be used to delete product from cart by users---------------->
-userRouter.delete("/delete_cart_product/:id",async(req,res)=>{
+userRouter.delete("/cart_product/delete/:id",async(req,res)=>{
     const ID=req.params.id;
     try{
         await CartProductsModel.findByIdAndDelete({_id:ID});
@@ -144,34 +234,26 @@ userRouter.delete("/delete_cart_product/:id",async(req,res)=>{
 
 // below code can be used to add ordered products in order summery by user ---------------->
 userRouter.post("/order/add",async(req,res)=>{
-    const productID=req.params.id
+    const userID=req.body.userID;
+    const products = await CartProductsModel.find({userID})
     try{
-        const cart = new CartProductsModel({...req.body,productID,qty:1});
-        await cart.save();
-        res.send({"msg":"Product added to cart"})
+        await OrderModel.insertMany([...products]);
+        await CartProductsModel.deleteMany({userID})
+        res.send({"msg":"Product ordered"})
     }catch(err){
-        res.send({"msg":"somthing went wrong! cannot add","error":err.message})
+        res.send({"msg":"somthing went wrong! cannot order the products","error":err.message})
     }
 })
 
 
 // below code can be used to get ordered products in order summery by user ---------------->
 userRouter.get("/order",async(req,res)=>{
-    const userID=req.body.userID
-    let orderProducts=[];
+    const userID=req.body.userID;
     try{
-        const order = await OrderModel.find({userID});
-        if(order.length>0){
-            order.forEach((el)=>{
-                const prod= ProductModel.findOne({productID:el.productID});
-                orderProducts.push(prod)
-            })
-            res.send(orderProducts)
-        }else{
-            res.send({"msg":"Order summery is empty"})
-        }
-        
-    }catch(err){
+        const order = await OrderModel.find({userID}).populate("productID");
+        res.send(order)
+    }
+    catch(err){
         res.send({"msg":"somthing went wrong! cannot get ordered products","error":err.message})
     }
 })
