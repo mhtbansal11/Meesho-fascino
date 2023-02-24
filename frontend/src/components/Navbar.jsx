@@ -20,7 +20,7 @@ import {
   InputLeftElement,
 } from "@chakra-ui/react";
 
-export default function Nav() {
+export default function Navbar() {
   return (
     <>
       <Box bg={useColorModeValue("gray.100", "gray.900")} px={4}>
@@ -116,7 +116,7 @@ export default function Nav() {
                   <MenuDivider />
                   <MenuItem>My Orders</MenuItem>
                   <MenuItem>Delete Account</MenuItem>
-                  <MenuItem>My Orders</MenuItem>
+                  <MenuItem>Admin</MenuItem>
                   <MenuItem>Logout</MenuItem>
                 </MenuList>
               </Menu>

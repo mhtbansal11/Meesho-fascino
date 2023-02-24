@@ -1,15 +1,17 @@
 import "./App.css";
 import WithSubnavigation from "./components/mainNav";
-import Nav from "./components/2";
 import Footer from "./components/footer";
 import Footer2 from "./components/footer2";
 import Content from "./components/content";
+import Product from "./components/product";
+import Navbar from "./components/Navbar";
 function App() {
   return (
     <div>
-      <Nav />
+      <Navbar />
       <WithSubnavigation />
       <Content />
+      <Product />
       <Footer />
       <Footer2 />
     </div>
