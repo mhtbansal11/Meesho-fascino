@@ -1,20 +1,39 @@
 import React from 'react'
-import { Box,InputGroup,InputLeftElement,Input } from '@chakra-ui/react'
-import {ImPhone} from 'react-icons/im'
+import { Box, InputGroup, InputLeftElement, Input, Flex, Avatar, Text, Badge } from '@chakra-ui/react'
+import { ImPhone } from 'react-icons/im'
+import {FcSearch} from 'react-icons/fc'
 export const AdminTop = () => {
   return (
-    <Box padding={'0px 100px'}  justifyContent={'space-between'} display={'flex'} bg='' height='65px' position={'sticky'} top='0' >
-        <Box>logo</Box>
-        <Box>
+    <Box justifyContent={'space-between'} alignItems={'center'} padding={'0px 80px'} display={'flex'} bg='' height='70px' position={'sticky'} top='0' >
+      <Box>
+        <Avatar />
+      </Box>
+      <Box w='400px' >
         <InputGroup>
-    <InputLeftElement
-      pointerEvents='none'
-      children={<ImPhone color='gray.300' />}
-    />
-    <Input type='tel' placeholder='Phone number' />
-  </InputGroup>
-        </Box>
-        <Box>profile</Box>
+          <InputLeftElement
+            pointerEvents='none'
+            children={<FcSearch  />}
+          />
+          <Input type='text' placeholder='Search by title name ' />
+        </InputGroup>
+      </Box>
+      <Box>
+        <Flex>
+          <Avatar src='https://bit.ly/sage-adebayo' />
+          <Box ml='3'>
+            <Text mt='10px' fontWeight='bold'>
+              Jitendra
+              <Badge ml='1' colorScheme='green'>
+                Admin
+              </Badge>
+            </Text>
+            {/* <Text fontSize='sm'>UI Engineer</Text> */}
+          </Box>
+        </Flex>
+
+
+
+      </Box>
     </Box>
   )
 }

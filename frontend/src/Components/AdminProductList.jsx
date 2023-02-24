@@ -1,7 +1,12 @@
 import { Box, Image, Text, Button } from '@chakra-ui/react'
 import React from 'react'
 
-export const AdminProductList = ({ _id, brand, category, discount, discounted_price, strike_price, title, type, images, rating }) => {
+export const AdminProductList = ({ _id, brand, category, discount, discounted_price, strike_price, title, type, images, rating,deleteProduct }) => {
+
+    const handleDelete=()=>{
+        deleteProduct(_id)
+    }
+
     return (
         <Box  display={'grid'}  >
 
@@ -28,7 +33,7 @@ export const AdminProductList = ({ _id, brand, category, discount, discounted_pr
                     <Text>{type}</Text>
                 </Box>
                 <Button>EDIT</Button>
-                <Button>DELETE</Button>
+                <Button onClick={handleDelete}>DELETE</Button>
 
             </Box>
         </Box>
