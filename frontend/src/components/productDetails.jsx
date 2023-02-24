@@ -6,6 +6,7 @@ const ProductDetails = ({ rating, strike_price, title, type, images }) => {
       style={{
         border: "1px solid ",
         textAlign: "center",
+        padding: "5%",
       }}
     >
       <img
@@ -25,6 +26,17 @@ const ProductDetails = ({ rating, strike_price, title, type, images }) => {
       <p>Price : {strike_price}</p>
       <p> Rating : {rating}</p>
       <p>{type}</p>
+      <button
+        style={{
+          background: "green",
+          border: "none",
+          borderRadius: "5px",
+          padding: "5px",
+          color: "white",
+        }}
+      >
+        Add to Cart
+      </button>
     </div>
   );
 };
