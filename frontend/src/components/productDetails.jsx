@@ -4,21 +4,17 @@ const ProductDetails = ({ rating, strike_price, title, type, images }) => {
   return (
     <div
       style={{
-        border: "1px solid ",
+        height: "450px",
+        boxShadow: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px",
         textAlign: "center",
         padding: "5%",
       }}
     >
-      <img
-        style={{
-          marginLeft: "10%",
-        }}
-        src={images[0]}
-        alt=""
-      />
+      <img src={images[0]} alt="" />
       <h1
         style={{
-          fontSize: "20px",
+          fontSize: "15px",
+          fontWeight:"bold"
         }}
       >
         {title}
@@ -26,17 +22,6 @@ const ProductDetails = ({ rating, strike_price, title, type, images }) => {
       <p>Price : {strike_price}</p>
       <p> Rating : {rating}</p>
       <p>{type}</p>
-      <button
-        style={{
-          background: "green",
-          border: "none",
-          borderRadius: "5px",
-          padding: "5px",
-          color: "white",
-        }}
-      >
-        Add to Cart
-      </button>
     </div>
   );
 };

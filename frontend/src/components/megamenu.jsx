@@ -18,7 +18,6 @@ import {
   HamburgerIcon,
   CloseIcon,
   ChevronDownIcon,
-  ChevronRightIcon,
 } from "@chakra-ui/icons";
 
 export default function MegaMenu() {
@@ -119,13 +118,24 @@ const DesktopNav = () => {
   );
 };
 
-const DesktopSubNav = ({ label, href, subLabel }) => {
+const DesktopSubNav = ({
+  label,
+  href,
+  subLabel,
+  subLabel1,
+  subLabel2,
+  subLabel3,
+  subLabel4,
+  subLabel5,
+  subLabel6,
+  subLabel7,
+}) => {
   return (
     <Link
-      href={href}
+      to={href}
       role={"group"}
       display={"block"}
-      p={2}
+      p={6}
       rounded={"md"}
       _hover={{ bg: useColorModeValue("pink.50", "gray.900") }}
     >
@@ -139,7 +149,74 @@ const DesktopSubNav = ({ label, href, subLabel }) => {
           >
             {label}
           </Text>
-          <Text fontSize={"sm"}>{subLabel}</Text>
+          <Box ml={"5%"}>
+            <Text
+              fontSize={"15px"}
+              mt={"18px"}
+              color={"gray"}
+              _hover={{ color: "black" }}
+            >
+              {subLabel}
+            </Text>
+            <Text
+              fontSize={"14px"}
+              mt={"10px"}
+              color={"gray"}
+              _hover={{ color: "black" }}
+              w={"150px"}
+            >
+              {subLabel1}
+            </Text>
+            <Text
+              fontSize={"14px"}
+              mt={"10px"}
+              color={"gray"}
+              _hover={{ color: "black" }}
+              w={"140px"}
+            >
+              {subLabel2}
+            </Text>
+            <Text
+              fontSize={"14px"}
+              mt={"10px"}
+              color={"gray"}
+              _hover={{ color: "black" }}
+            >
+              {subLabel3}
+            </Text>
+            <Text
+              fontSize={"14px"}
+              mt={"10px"}
+              color={"gray"}
+              _hover={{ color: "black" }}
+            >
+              {subLabel4}
+            </Text>
+            <Text
+              fontSize={"14px"}
+              mt={"10px"}
+              color={"gray"}
+              _hover={{ color: "black" }}
+            >
+              {subLabel5}
+            </Text>
+            <Text
+              fontSize={"14px"}
+              mt={"10px"}
+              color={"gray"}
+              _hover={{ color: "black" }}
+            >
+              {subLabel6}
+            </Text>
+            <Text
+              fontSize={"14px"}
+              mt={"10px"}
+              color={"gray"}
+              _hover={{ color: "black" }}
+            >
+              {subLabel7}
+            </Text>
+          </Box>
         </Box>
         <Flex
           transition={"all .3s ease"}
@@ -149,14 +226,11 @@ const DesktopSubNav = ({ label, href, subLabel }) => {
           justify={"flex-end"}
           align={"center"}
           flex={1}
-        >
-          <Icon w={5} h={5} as={ChevronRightIcon} />
-        </Flex>
+        ></Flex>
       </Stack>
     </Link>
   );
 };
-
 const MobileNav = () => {
   return (
     <Stack p={4} display={{ md: "none" }}>
@@ -215,7 +289,6 @@ const MobileNavItem = ({ label, children, href }) => {
     </Stack>
   );
 };
-
 
 const NAV_ITEMS = [
   {

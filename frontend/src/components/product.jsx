@@ -18,6 +18,8 @@ const Product = () => {
   return (
     <div
       style={{
+        width:"80%",
+        margin:"auto",
         display: "grid",
         gridTemplateColumns: "repeat(5,1fr)",
         gap: "20px",
