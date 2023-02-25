@@ -15,6 +15,7 @@ const initialsate={
     password:""
 }
 
+
 const Signup = () => {
     const [pass,setpass]=useState(false)
     const [user,setuser]=useState(initialsate)
