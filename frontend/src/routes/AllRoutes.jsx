@@ -9,7 +9,7 @@ import Login from '../Pages/Rajkumar/Login'
 import Signup from '../Pages/Rajkumar/Signup'
 import Home from '../Pages/sonu/Home'
 import { AdminNavbar } from '../Pages/jitendera/AdminNavbar'
-import Cart from '../Pages/Avinash/Cart'
+import Cart from '../Pages/Avinash/Cart' 
 import Checkout from '../Pages/Avinash/Checkout'
 import Payment from '../Pages/Avinash/Payment'
 
