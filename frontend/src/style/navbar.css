@@ -1,0 +1,74 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+    list-style: none;
+}
+a{
+    text-decoration: none;
+    color: rgb(77, 74, 74);
+}
+#navbar{
+    width: 100vw;
+    height: 60px;
+    padding: 2rem 0;
+    /* border: 1px solid black; */
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background-color: whitesmoke;
+}
+#leftNav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 50vw;
+    /* border:1px solid black ; */
+
+}
+#logoMeesho>img{
+    width: 200px;
+    /* border: 1px solid rebeccapurple; */
+}
+#searchNavbar{
+    border: 1px solid rgb(77, 74, 74);;
+    height: 50px;
+    width: 21rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    border-radius: 8px;
+
+}
+#InputNavbar{
+    border: none;
+    width: 17rem;
+    height: 3rem;
+    background-color: whitesmoke;
+    outline: none;
+
+}
+
+#RightNav>ul{
+    display: flex;
+    width: inherit;
+    height: inherit;
+    margin: .5rem 0;
+    /* border: 1px solid red; */
+}
+#RightNav>ul>li{
+   text-align: center ;
+   padding: 5px;
+   margin: 0 1rem;
+    font-size: 16px;
+    font-weight: 600;
+    /* color: rgb(77, 74, 74);; */
+
+}
+#RightNav>ul>li>a>i{
+    display: block;
+}
