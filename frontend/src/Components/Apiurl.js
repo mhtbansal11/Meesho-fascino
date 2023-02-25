@@ -1,0 +1,1 @@
+export const apiurl='https://hungry-loincloth-calf.cyclic.app/'
