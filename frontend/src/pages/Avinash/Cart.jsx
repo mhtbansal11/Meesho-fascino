@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Box, Button, Center, Divider,
      Flex, Heading, HStack, Image, Input,
       Link, Select, Stack, Table, TableCaption,
-       TableContainer, Tbody, Td, Text, Th, Thead, Tr 
+       TableContainer, Tbody, Td, Text, Th, Thead, Tr, useToast 
     } from "@chakra-ui/react";
 import {BsDashLg,BsPlusLg,BsXLg} from "react-icons/bs";
 
@@ -14,6 +14,7 @@ const [promocode, setPromocode] = useState("");
 const [inputText, setInputText] = useState("");
 const [discount, setDiscount] = useState(0);
 const [totalPrice, setTotalPrice] = useState(0);
+const toast= useToast();
 // const{productID,qty}=cartProducts;
 
 
@@ -106,7 +107,13 @@ const handleOrderSummery=(userID)=>{
         }
     }).then(res=>res.json())
       .then(res=>{
-        console.log(res)
+        toast({
+          title: `${res.msg}`,
+          description: "Congratulations....",
+          status: res.msg==="Product ordered"?"success":"error",
+          duration: 2000,
+          isClosable: true,
+        })
         getCartProducts();
       }).catch(err=>console.log(err.message))
 }
