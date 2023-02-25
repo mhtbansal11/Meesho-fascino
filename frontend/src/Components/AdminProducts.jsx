@@ -19,7 +19,7 @@ export const Products = () => {
     }
 
     const deleteProduct=(id)=>{
-        axios.delete(`https://hungry-loincloth-calf.cyclic.app/products/delete/product/${id}`)
+        axios.delete(`https://hungry-loincloth-calf.cyclic.app/admin/delete/product/${id}`)
         .then((res)=>{
             console.log(res.data)
         }).catch(err=>console.log(err))
