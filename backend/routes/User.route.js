@@ -261,8 +261,8 @@ userRouter.get("/order",async(req,res)=>{
 
 
 // below code can be used to delete all products from cart by users---------------->
-userRouter.delete("/clear_cart/:id",async(req,res)=>{
-    const userID=req.params.id;
+userRouter.delete("/clear_cart",async(req,res)=>{
+    const userID=req.body.userID;
     try{
         await CartProductsModel.deleteMany({userID});
         res.send({"msg":"cart cleared"})
@@ -284,9 +284,21 @@ userRouter.patch("/logout",async(req,res)=>{
 })
 
 
+// below code can be used to add shipping address for order products by users---------------->
+userRouter.patch("/add/location",async(req,res)=>{
+    const userID=req.body.userID;
+    const payload=req.body;
+    try{
+        await UserModel.findByIdAndUpdate({_id:userID},payload);
+        res.send({"msg":"Address Submitted"})
+    }catch(err){
+        res.send({"msg":"somthing went wrong! cannot add Address","error":err.message})
+    }
+})
+
 // below code can be used to delete Account by users---------------->
-userRouter.delete("/delete/:id",async(req,res)=>{
-    const userID=req.params.id;
+userRouter.delete("/delete",async(req,res)=>{
+    const userID=req.body.userID;
     try{
         await UserModel.findByIdAndDelete({_id:userID});
         res.send({"msg":"Your account is deleted"})
