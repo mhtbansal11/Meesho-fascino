@@ -2,7 +2,7 @@ import React from 'react'
 import { Grid, GridItem } from '@chakra-ui/react'
 import { Sidebar } from './AdminSidebar'
 
-import { AllRoutes } from '../routes/AllRoutes'
+import { AllRoutes } from '../../routes/AllRoutes'
 import { AdminTop } from './AdminTop'
 export const AdminNavbar = () => {
   return (
@@ -26,7 +26,7 @@ export const AdminNavbar = () => {
         <Sidebar />
       </GridItem>
       <GridItem pl='2' bg='' area={'main'}>
-        <AllRoutes />
+        {/* <AllRoutes /> */}
       </GridItem>
     </Grid>
   )

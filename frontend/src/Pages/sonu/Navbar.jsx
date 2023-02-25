@@ -19,16 +19,18 @@ import {
   InputGroup,
   InputLeftElement,
 } from "@chakra-ui/react";
+import logo from "./style/fascino.jpeg";
 
 export default function Navbar() {
   return (
     <>
-      <Box bg={useColorModeValue("gray.100", "gray.900")} px={4}>
+      <Box bg={useColorModeValue("white.100", "white.900")} px={4}>
         <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
           <Box>
             <Image
-              width={"80px"}
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYPH6CsK1-pfWMeKI9TooU2RkMEOaPEmGbytx7Y6f8qe-0TW46xydCDVsRRaF56zLinsU&usqp=CAU"
+              width={"40%"}
+              // height={"70px"}
+             src={logo}
             />
           </Box>
           <Stack spacing={4}>

@@ -1,7 +1,7 @@
 import React from "react";
 import { List, ListIcon, ListItem } from "@chakra-ui/react";
 import { MdCheckCircle } from "react-icons/md";
-import "../style/content.css";
+import "./style/content.css";
 const Content = () => {
   return (
     <div id="ggg">

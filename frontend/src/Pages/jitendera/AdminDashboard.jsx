@@ -2,6 +2,7 @@ import { Box } from '@chakra-ui/react'
 import React,{useEffect,useState} from 'react'
 import Chart from 'react-apexcharts'
 import axios from 'axios'
+import { AdminNavbar } from './AdminNavbar'
 export const AdminDashboard = () => {
 
   let [products, setProducts] = useState([])
@@ -31,6 +32,7 @@ let Kurta=products.filter((el)=>el.category=="Kurta").length
 
   return (
     <Box>
+       <AdminNavbar/>
           <Box mt='100px'>
         <Chart
          mt={300}
