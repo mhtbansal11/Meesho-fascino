@@ -3,7 +3,7 @@ import { useState, useContext } from 'react'
 import './Signup.css'
 import { RiEyeFill, RiEyeCloseFill } from "react-icons/ri";
 import { Globalcontext } from './Context/Context';
-// import { apiurl } from './Apiurl';
+import { apiurl } from './Apiurl';
 import axios from 'axios';
 import { useToast } from '@chakra-ui/react'
 import { Navigate } from 'react-router-dom'
@@ -33,7 +33,7 @@ const Login = () => {
     e.preventDefault()
     axios({
       method: 'post',
-    //   url: `${apiurl}/login`,
+      url: `${apiurl}/login`,
       data: user
     })
       .then((res) => {

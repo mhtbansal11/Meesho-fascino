@@ -2,7 +2,7 @@ import React from 'react'
 import { useState } from 'react'
 import './Signup.css'
 import { RiEyeFill,RiEyeCloseFill } from "react-icons/ri";
-// import { apiurl } from './Apiurl';
+import { apiurl } from './Apiurl';
 import axios from 'axios'
 import { useToast } from '@chakra-ui/react'
 import { Link, Navigate } from 'react-router-dom';
@@ -29,7 +29,7 @@ const Signup = () => {
     const registeruser=()=>{
         axios({
             method:'post',
-            // url:`${apiurl}/register`,
+            url:`${apiurl}/register`,
             data:user
         })
         .then((res)=>{
