@@ -293,12 +293,12 @@ const MobileNavItem = ({ label, children, href }) => {
 const NAV_ITEMS = [
   {
     label: "All",
-    href: "#",
+    href: "/productpage",
     children: [
       {
         label: "All Women Ethnic",
         subLabel: "View All",
-        href: "/products",
+        href: "/productpage",
       },
       {
         label: "Sarees",

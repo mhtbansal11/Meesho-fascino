@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import Footer from "./footer";
+import Navbar from "./Navbar";
 
 const ProductPage = () => {
   const [data, setData] = useState([]);
@@ -29,6 +31,8 @@ const ProductPage = () => {
 
   //   console.log(data);
   return (
+    <>
+    <Navbar/>
     <div
       style={{
         width: "80%",
@@ -67,13 +71,15 @@ const ProductPage = () => {
                   background: "red",
                 }}
               >
-                Add to Cart
+                Buy Now
               </button>
             </div>
           </Link>
         );
       })}
     </div>
+    <Footer/>
+    </>
   );
 };
 

@@ -17,8 +17,11 @@ import {
   ListItem,
   useBreakpointValue,
   IconButton,
+  useToast,
 } from "@chakra-ui/react";
 import { useParams } from "react-router-dom";
+import Navbar from "./Navbar";
+import Footer from "./footer";
 const settings = {
   dots: true,
   arrows: true,
@@ -32,13 +35,14 @@ const settings = {
 };
 
 export default function SingleProduct() {
+  const Toast = useToast();
   const [slider, setSlider] = React.useState(null);
   const top = useBreakpointValue({ base: "90%", md: "50%" });
   const side = useBreakpointValue({ base: "30%", md: "10px" });
   const [img, setImg] = useState([]);
   const [data, setData] = useState({});
   const { id } = useParams();
-  // console.log(id);
+
   const getData = async () => {
     try {
       let r = await fetch(
@@ -54,15 +58,46 @@ export default function SingleProduct() {
       );
       let d = await r.json();
       setData(d);
-      console.log(d.images);
       setImg(d.images);
     } catch (error) {
       console.log(error);
     }
   };
-  // console.log(52,data);
+
+  const Addtocart = async () => {
+    console.log("clicked");
+    try {
+      let r = await fetch(
+        `https://hungry-loincloth-calf.cyclic.app/users/cart_product/add/${id}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: localStorage.getItem("token"),
+          },
+          body: JSON.stringify(),
+        }
+      );
+      let d = await r.json();
+      Toast({
+        title: `${d.msg}`,
+        status: d.msg === "Product added to cart" ? "success" : "error",
+        duration: 2000,
+        isClosable: true,
+      });
+    } catch (error) {
+      console.log(error);
+      Toast({
+        title: `${error.message}`,
+        status: "error",
+        duration: 2000,
+        isClosable: true,
+      });
+    }
+  };
   useEffect(() => {
     getData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const {
@@ -71,15 +106,13 @@ export default function SingleProduct() {
     discounted_price,
     rating,
     rating_count,
-    size,
     strike_price,
     title,
     type,
   } = data;
-
-  const cards = [];
   return (
     <>
+      <Navbar />
       <Container maxW={"7xl"}>
         <SimpleGrid
           columns={{ base: 1, lg: 2 }}
@@ -183,7 +216,13 @@ export default function SingleProduct() {
                 >
                   {category}
                 </Text>
-                <Text fontSize={"lg"}>{"description"}</Text>
+                <Text fontSize={"lg"}>
+                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                  Nostrum harum rem ex non ut inventore dicta minima iure sint
+                  consequuntur reiciendis saepe exercitationem quos quis, amet
+                  reprehenderit voluptas ea accusamus? Nostrum mollitia ab
+                  magni.
+                </Text>
               </VStack>
 
               <Box>
@@ -251,6 +290,7 @@ export default function SingleProduct() {
             </Stack>
 
             <Button
+              onClick={Addtocart}
               rounded={"none"}
               w={"full"}
               mt={8}
@@ -278,8 +318,7 @@ export default function SingleProduct() {
           </Stack>
         </SimpleGrid>
       </Container>
+      <Footer />
     </>
   );
 }
-
-// const [slider, setSlider] = React.useState<Slider | null>(null);

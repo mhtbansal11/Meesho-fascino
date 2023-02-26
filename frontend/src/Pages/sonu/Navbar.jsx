@@ -22,6 +22,7 @@ import {
 
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import MegaMenu from "./megamenu";
 import logo from "./style/fascino.jpeg";
 
 export default function Navbar() {
@@ -127,7 +128,7 @@ export default function Navbar() {
             </MenuList>
           </Menu>
           <Text>Become a Supplier</Text>
-          <Link to="/cart"><Avatar
+          <Link href="/cart"><Avatar
             size={"sm"}
             src={
               "https://static.vecteezy.com/system/resources/previews/004/999/463/original/shopping-cart-icon-illustration-free-vector.jpg"
@@ -174,6 +175,7 @@ export default function Navbar() {
           </Flex>
         </Flex>
       </Box>
+      <MegaMenu/>
     </>
   );
 }

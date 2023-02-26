@@ -1,8 +1,8 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
 const ProductDetails = ({ rating, strike_price, title, type, images, _id }) => {
   return (
-    <div
+   <Link to={`/productpage/${_id}`}> <div
       style={{
         height: "450px",
         boxShadow: "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px",
@@ -23,6 +23,7 @@ const ProductDetails = ({ rating, strike_price, title, type, images, _id }) => {
       <p> Rating : {rating}</p>
       <p>{type}</p>
     </div>
+    </Link>
   );
 };
 
