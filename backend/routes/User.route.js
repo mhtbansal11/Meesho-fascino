@@ -8,6 +8,17 @@ const { OrderModel } = require("../model/order.model");
 
 const userRouter= express.Router();
 
+// below code can be used to get user details for  by users---------------->
+userRouter.patch("/",async(req,res)=>{
+    const userID=req.body.userID;
+    try{
+        const user = await UserModel.findOne({_id:userID});
+        res.send(user)
+    }catch(err){
+        res.send({"msg":"somthing went wrong! cannot get user","error":err.message})
+    }
+})
+
 //below code can be used to get all products by using filter in user site---------------->
 userRouter.get("/products/filter",async(req,res)=>{
     const query= req.query;
@@ -177,6 +188,17 @@ userRouter.get("/products/filter",async(req,res)=>{
         res.send(products);
     }catch(err){
         res.send({"msg":"cannot get products","error":err.message})
+    }
+})
+
+// below code can be used to get single product using ID by users ---------------->
+userRouter.get("/product/:id",async(req,res)=>{
+    const ID=req.params.id;
+    try{
+        const prod = await ProductModel.findById({_id:ID});
+        res.send(prod)
+    }catch(err){
+        res.send({"msg":"somthing went wrong! cannot Get Product","error":err.message})
     }
 })
 
