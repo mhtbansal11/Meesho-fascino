@@ -9,6 +9,7 @@ const userSchema= mongoose.Schema({
     city:{type:String,required:true},
     is_admin:{type:Boolean,required:false},
     is_active:{type:Boolean,required:false},
+    shipping_address:Object
 },{
     versionKey:false
 });
