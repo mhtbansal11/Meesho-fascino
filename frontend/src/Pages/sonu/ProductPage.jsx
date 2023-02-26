@@ -3,12 +3,7 @@ import { Link } from "react-router-dom";
 
 const ProductPage = () => {
   const [data, setData] = useState([]);
-  // const getData = async () => {
-  //   let r = await axios.get(
-  //     "https://hungry-loincloth-calf.cyclic.app/users/products/filter"
-  //   );
-  //   setData(r.data);
-  // };
+ 
   const getData = async () => {
     try {
       let r =await fetch(
@@ -17,7 +12,7 @@ const ProductPage = () => {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
-            Authorization: localStorage.getItem("token"),
+            "Authorization": localStorage.getItem("token"),
           },
           body: JSON.stringify(),
         }
@@ -43,9 +38,9 @@ const ProductPage = () => {
         gap: "20px",
       }}
     >
-      {data.map((el) => {
+      {data?.map((el) => {
         return (
-          <Link to={`/productPage/${el._id}`}>
+          <Link to={`/productpage/${el._id}`}>
             <div
               key={el._id}
               style={{
