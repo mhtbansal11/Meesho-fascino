@@ -17,7 +17,7 @@ const ProductPage = () => {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
-            Authorization: localStorage.getItem("token"),
+            "Authorization": localStorage.getItem("token"),
           },
           body: JSON.stringify(),
         }
@@ -45,7 +45,7 @@ const ProductPage = () => {
     >
       {data.map((el) => {
         return (
-          <Link to={`/productPage/${el._id}`}>
+          <Link to={`/productpage/${el._id}`}>
             <div
               key={el._id}
               style={{

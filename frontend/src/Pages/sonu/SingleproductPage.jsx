@@ -43,13 +43,28 @@ export default function SingleProduct() {
   const [data, setData] = useState({});
   const { _id } = useParams();
   console.log(_id);
-  const getData = async () => {
-    let r = await axios.get(
-      `https://hungry-loincloth-calf.cyclic.app/users/product/${_id}`
-    );
-    setData(r.data);
+  const getData = async (id=_id) => {
+
+    try {
+      let r =await fetch(
+        `https://hungry-loincloth-calf.cyclic.app/users/product/${id}`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": localStorage.getItem("token"),
+          },
+          body: JSON.stringify(),
+        }
+      );
+      let d = await r.json();
+      setData(d)
+      console.log(data);
+    } catch (error) {
+      console.log(error.message);
+    }
   };
-  console.log(data);
+ 
   useEffect(() => {
     getData();
   }, []);
