@@ -1,5 +1,6 @@
-
 import React, { useState } from "react";
+import Navbar from "../sonu/Navbar";
+import Footer from "../sonu/footer";
 import {
   Box,
   Button,
@@ -16,9 +17,8 @@ import { useToast } from "@chakra-ui/react";
 
 import { useNavigate } from "react-router-dom";
 
-
 const adress = {
-  full_name:"",
+  full_name: "",
   street: "",
   city: "",
   state: "",
@@ -31,53 +31,47 @@ const Checkout = () => {
   const [progress, setProgress] = useState(false);
   const navigate = useNavigate();
 
-
-
   const addAddress = async () => {
-    setProgress(true)
-    fetch(`https://hungry-loincloth-calf.cyclic.app/users/add/location`,{
-        method:"PATCH",
-        headers:{
-            "Content-Type":"application/json",
-            "Authorization": localStorage.getItem("token")
-        },
-        body:JSON.stringify({shipping_address:address})
-    }).then(res=>res.json())
-      .then(res=>{
-        setProgress(false)
+    setProgress(true);
+    fetch(`https://hungry-loincloth-calf.cyclic.app/users/add/location`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: localStorage.getItem("token"),
+      },
+      body: JSON.stringify({ shipping_address: address }),
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        setProgress(false);
         toast({
-            title: `${res.msg}`,
-            description: "You can go to payment.",
-            status: res.msg==="Address Submitted"?"success":"error",
-            duration: 2000,
-            isClosable: true,
-          })
-          navigate("/payment");
-      }).catch(err=>{
-        toast({
-            title: `${err.message}`,
-            description: "somthing went wrong",
-            status: "error",
-            duration: 2000,
-            isClosable: true,
-          })
+          title: `${res.msg}`,
+          description: "You can go to payment.",
+          status: res.msg === "Address Submitted" ? "success" : "error",
+          duration: 2000,
+          isClosable: true,
+        });
+        navigate("/payment");
       })
-    }
-
-
- 
+      .catch((err) => {
+        toast({
+          title: `${err.message}`,
+          description: "somthing went wrong",
+          status: "error",
+          duration: 2000,
+          isClosable: true,
+        });
+      });
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setAddress({ ...address, [name]: value });
   };
 
-  
-
   return (
     <>
-      {/* <Navbar /> */}
-
+      <Navbar />
       <Box
         my={{ lg: "150px", md: "100px", sm: "70px" }}
         borderWidth="1px"
@@ -102,7 +96,6 @@ const Checkout = () => {
             >
               Shipping Address
             </Heading>
-
             <FormControl as={GridItem} colSpan={6}>
               <FormLabel
                 htmlFor="street_address"
@@ -129,7 +122,6 @@ const Checkout = () => {
                 onChange={handleChange}
               />
             </FormControl>
-            
             <FormControl as={GridItem} colSpan={6}>
               <FormLabel
                 htmlFor="street_address"
@@ -195,7 +187,7 @@ const Checkout = () => {
                   }}
                   mt="2%"
                 >
-                 Contach No
+                  Contach No
                 </FormLabel>
                 <Input
                   type="text"
@@ -296,7 +288,7 @@ const Checkout = () => {
         </Button>
       </Box>
 
-      {/* <LargeWithAppLinksAndSocial /> */}
+      <Footer/>
     </>
   );
 };
