@@ -44,7 +44,7 @@ const Payment = () => {
   const toast = useToast();
   const [modalValue, setModalValue] = useState("");
   const [userDetails, setUserDetails] = useState();
-  const [address, setAddress] = useState();
+  const [address, setAddress] = useState([]);
   const [loading, setLoading] = useState(false);
   const [products,setProducts]=useState([]);
 
@@ -62,7 +62,7 @@ const Payment = () => {
   };
 
   const getUserDetails = () => {
-    fetch(`https://hungry-loincloth-calf.cyclic.app/users/`, {
+    fetch(`https://hungry-loincloth-calf.cyclic.app/users/get`, {
       method: "GET",
       headers: {
         "Content-type": "application/json",
@@ -72,6 +72,7 @@ const Payment = () => {
     })
       .then((res) => res.json())
       .then((res) => {
+        console.log(res)
         setUserDetails(res);
         setAddress(res.shipping_address);
       })
@@ -107,6 +108,7 @@ const Payment = () => {
           duration: 2000,
           isClosable: true,
         }):
+        console.log(res)
         setProducts(res)
       })
       .catch(err=>{
@@ -232,7 +234,7 @@ const Payment = () => {
               <Divider />
               <Stack>
                 {products?.map((item) => {
-                totalPrice += item.productID.discounted_price * item.productID.qty;
+                totalPrice += item.productID.discounted_price * item.qty;
                 return (
                   <Flex key={item.id} gap={5}>
                     <Image
@@ -245,12 +247,12 @@ const Payment = () => {
                       <Text fontWeight={"bold"}>
                         {item.productID.type + " " + item.productID.category}
                       </Text>
-                      <Text>Size:- {item.productID.sizes[1]}</Text>
+                      <Text>Size:- {item.productID.size[1]}</Text>
                       <Text>
-                        Price:- {item.productID.discounted_price} x {item.productID.qty}
+                        Price:- {item.productID.discounted_price} x {item.qty}
                       </Text>
                       <Text color={"green.500"}>
-                        RS {item.productID.discounted_price * item.productID.qty}/-
+                        RS {item.productID.discounted_price * item.qty}/-
                       </Text>
                     </Box>
                   </Flex>
