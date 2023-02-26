@@ -18,32 +18,30 @@ import { useNavigate } from "react-router-dom";
 
 
 const adress = {
-  firstName:"",
-  lastName:"",
+  full_name:"",
   street: "",
   city: "",
   state: "",
   postal_code: "",
-  country: "",
-  mobile: "",
+  contact: "",
 };
 const Checkout = () => {
   const [address, setAddress] = useState(adress);
   const toast = useToast();
-  const [progress, setProgress] = useState(true);
+  const [progress, setProgress] = useState(false);
   const navigate = useNavigate();
 
 
 
   const addAddress = async () => {
-    //id=profile[0].id
+    setProgress(true)
     fetch(`https://hungry-loincloth-calf.cyclic.app/users/add/location`,{
         method:"PATCH",
         headers:{
             "Content-Type":"application/json",
-            "Authorization":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI2M2Y4NGIyNzY0MzRhMzhiZWJmODY4MjkiLCJpYXQiOjE2NzcyNjczNTh9.UG1dcxZ57QlVMm9V2TGNzE0_niw1Z2hg1tRh1OIpQdQ"
+            "Authorization": localStorage.getItem("token")
         },
-        body:JSON.stringify(address)
+        body:JSON.stringify({shipping_address:address})
     }).then(res=>res.json())
       .then(res=>{
         setProgress(false)
@@ -57,7 +55,7 @@ const Checkout = () => {
           navigate("/payment");
       }).catch(err=>{
         toast({
-            title: `${err}`,
+            title: `${err.message}`,
             description: "somthing went wrong",
             status: "error",
             duration: 2000,
@@ -104,6 +102,34 @@ const Checkout = () => {
             >
               Shipping Address
             </Heading>
+
+            <FormControl as={GridItem} colSpan={6}>
+              <FormLabel
+                htmlFor="street_address"
+                fontSize="sm"
+                color="teal.500"
+                fontWeight="bold"
+                _dark={{
+                  color: "gray.50",
+                }}
+                mt="2%"
+              >
+                Full name
+              </FormLabel>
+              <Input
+                type="text"
+                name="full_name"
+                id="street_address"
+                autoComplete="street-address"
+                focusBorderColor="brand.400"
+                shadow="sm"
+                size="sm"
+                w="full"
+                rounded="md"
+                onChange={handleChange}
+              />
+            </FormControl>
+            
             <FormControl as={GridItem} colSpan={6}>
               <FormLabel
                 htmlFor="street_address"
@@ -160,7 +186,7 @@ const Checkout = () => {
 
               <FormControl as={GridItem} colSpan={[6, 3, null, 2]}>
                 <FormLabel
-                  htmlFor="state"
+                  htmlFor="contact"
                   fontSize="sm"
                   color="teal.500"
                   fontWeight="bold"
@@ -169,13 +195,13 @@ const Checkout = () => {
                   }}
                   mt="2%"
                 >
-                  Country / Region
+                 Contach No
                 </FormLabel>
                 <Input
                   type="text"
-                  name="state"
-                  id="state"
-                  autoComplete="state"
+                  name="contact"
+                  id="contact"
+                  autoComplete="contact"
                   focusBorderColor="brand.400"
                   shadow="sm"
                   size="sm"
@@ -216,7 +242,7 @@ const Checkout = () => {
                 <FormLabel
                   color="teal.500"
                   fontWeight="bold"
-                  htmlFor="country"
+                  htmlFor="state"
                   fontSize="sm"
                   _dark={{
                     color: "gray.50",
@@ -227,9 +253,9 @@ const Checkout = () => {
                 <Select
                   color="blue.500"
                   fontWeight="bold"
-                  id="country"
-                  name="country"
-                  autoComplete="country"
+                  id="state"
+                  name="state"
+                  autoComplete="state"
                   placeholder="Select option"
                   focusBorderColor="brand.400"
                   shadow="sm"

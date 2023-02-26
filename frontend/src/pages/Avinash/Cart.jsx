@@ -52,7 +52,7 @@ function makeid(length) {
         method:"GET",
         headers:{
             "Content-type":"application/json",
-            "Authorization":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI2M2Y4NGIyNzY0MzRhMzhiZWJmODY4MjkiLCJpYXQiOjE2NzcyNjczNTh9.UG1dcxZ57QlVMm9V2TGNzE0_niw1Z2hg1tRh1OIpQdQ"
+            "Authorization": localStorage.getItem("token")
         },
         body:JSON.stringify()
     }).then(res=>res.json())
@@ -76,7 +76,7 @@ const handleUpdateCart=(val,id)=>{
         method:"PATCH",
         headers:{
             "Content-Type":"application/json",
-            "Authorization":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI2M2Y4NGIyNzY0MzRhMzhiZWJmODY4MjkiLCJpYXQiOjE2NzcyNjczNTh9.UG1dcxZ57QlVMm9V2TGNzE0_niw1Z2hg1tRh1OIpQdQ"
+            "Authorization":localStorage.getItem("token")
         },
         body:JSON.stringify({qty:val})
     }).then(res=>res.json())
@@ -90,7 +90,7 @@ const handleDeleteCart=(id)=>{
     fetch(`https://hungry-loincloth-calf.cyclic.app/users/cart_product/delete/${id}`,{
         method:"DELETE",
         headers:{
-            "Authorization":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI2M2Y4NGIyNzY0MzRhMzhiZWJmODY4MjkiLCJpYXQiOjE2NzcyNjczNTh9.UG1dcxZ57QlVMm9V2TGNzE0_niw1Z2hg1tRh1OIpQdQ"
+            "Authorization":localStorage.getItem("token")
         }
     }).then(res=>res.json())
       .then(res=>{
