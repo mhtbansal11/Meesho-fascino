@@ -73,7 +73,6 @@ const Checkout = () => {
     <>
       <Navbar />
       <Box
-        my={{ lg: "150px", md: "100px", sm: "70px" }}
         borderWidth="1px"
         rounded="lg"
         shadow="xl"

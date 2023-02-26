@@ -24,6 +24,8 @@ import {
   useToast,
 } from "@chakra-ui/react";
 import { BsDashLg, BsPlusLg, BsXLg } from "react-icons/bs";
+import Navbar from "../sonu/Navbar";
+import Footer from "../sonu/footer";
 
 const Cart = () => {
   const [cartProducts, setCartProducts] = useState([]);
@@ -185,7 +187,7 @@ const Cart = () => {
           mt={"50px"}
           boxShadow="rgba(67, 71, 85, 0.27) 0px 0px 0.25em, rgba(90, 125, 188, 0.05) 0px 0.25em 1em"
         >
-          {/* <Navbar/> */}
+          
           <Center>
             <Stack>
               <Image
@@ -225,8 +227,9 @@ const Cart = () => {
   // while products is added to cart-------------------------------------------->
   return (
     <>
-      <Box my={{ lg: "150px", md: "100px", sm: "70px" }}>
-        {/* <Navbar /> */}
+    <Navbar />
+      <Box>
+        
         <Flex
           justifyContent={"space-evenly"}
           flexDirection={{ base: "column", lg: "row" }}
@@ -473,7 +476,7 @@ const Cart = () => {
               h={50}
               m={5}
             >
-              <Link to="/">
+              <Link href="/">
                 <Button colorScheme="blue">Continue shopping</Button>
               </Link>
               <Button onClick={() => handleClearCart()} colorScheme="red">
@@ -482,7 +485,7 @@ const Cart = () => {
             </Stack>
           </Box>
         </Flex>
-        {/* <Footer /> */}
+        <Footer />
       </Box>
     </>
   );
