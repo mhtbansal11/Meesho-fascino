@@ -32,7 +32,7 @@ let Kurta=products.filter((el)=>el.category=="Kurta").length
 
   return (
     <Box>
-       <AdminNavbar/>
+       
           <Box mt='100px'>
         <Chart
          mt={300}

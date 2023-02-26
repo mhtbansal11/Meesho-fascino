@@ -1,31 +1,49 @@
 import { Box,Input,Flex ,Button,Heading, Select} from '@chakra-ui/react'
-import React from 'react'
+import axios from 'axios'
+import React ,{useState}from 'react'
 
 export const AdminAddProduct = () => {
+  const [image, setimage] = useState([])
+  const [title, settitle] = useState("")
+  const [price, setprice] = useState("")
+  const [discount, setdiscount] = useState("")
+  const [name, setname] = useState("")
+  const [category, setcategory] = useState("")
+  const [type, settype] = useState("")
+console.log(category,type)
+
+const handleAdd=()=>{
+  
+  axios.post(`https://hungry-loincloth-calf.cyclic.app/admin/add/product`)
+}
+
+
   return (
-    <Box mt='50px'>
-      <Heading mb='20px'>bhramarbar pls add new product</Heading>
+    <Box mt='40px'>
+      <Heading mb='20px'>ADD NEW PRODUCT</Heading>
       <Box p='20px 20px' boxShadow={' rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;'} display={'grid'}  gap='4' margin='auto' width={'35%'}>
-      <Input type='url' placeholder='enter image url' />
-      <Input type='text' placeholder='enter product title' />
-      <Input type='number' placeholder='enter price' />
-      <Input type='text' placeholder='enter discount' />
-      <Input type='text' placeholder='enter brand name' />
-<Select>
-  <option></option>
-  <option></option>
-  <option></option>
-  <option></option>
-  <option></option>
+      <Input value={image} onChange={(e)=>setimage(e.target.value)} type='url' placeholder='enter image url' />
+      <Input value={title} onChange={(e)=>settitle(e.target.value)} type='text' placeholder='enter product title' />
+      <Input value={price} onChange={(e)=>setprice(e.target.value)} type='number' placeholder='enter price' />
+      <Input value={discount} onChange={(e)=>setdiscount(e.target.value)} type='text' placeholder='enter discount' />
+      <Input value={name} onChange={(e)=>setname(e.target.value)} type='text' placeholder='enter brand name' />
+<Select onChange={(e)=>setcategory(e.target.value)}>
+<option value={''}  >select category</option>
+  <option >T-shirt</option>
+  <option>Jeans</option>
+  <option>Jacket</option>
+  <option>Pants</option>
+  <option>Sweatshirt</option>
+  <option>Kurta</option>
 </Select>
-<Select>
-  <option>select type</option>
-  <option>Mens</option>
+<Select onChange={(e)=>settype(e.target.value)} >
+  <option value={''}>select type</option>
+  <option >Mens</option>
   <option>Child</option>
   <option>Womens</option>
   
 </Select>
-     <Button bg='red' _hover={{bg:'orange'}} color={'white'}>Sibu</Button>
+     <Button onClick={handleAdd} mt='20px' bg='red' _hover={{bg:'blue'}} color={'white'}>ADD</Button>
       </Box>
     </Box>
   )
