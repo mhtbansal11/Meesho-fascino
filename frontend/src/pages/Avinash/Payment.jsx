@@ -1,4 +1,4 @@
-import { CheckIcon, EmailIcon, PhoneIcon } from "@chakra-ui/icons";
+import { AiOutlineCheck, AiOutlineMail, AiFillPhone } from "react-icons/ai";
 import {
   Box,
   Divider,
@@ -144,7 +144,7 @@ const Payment = () => {
         >
           <Stack p={5} color={"gray.500"}>
             <Text fontWeight={"bold"} color={"blue.500"}>
-              Login <CheckIcon color={"green.500"} />
+              Login <AiOutlineCheck color={"green.500"} />
             </Text>
             <Stack>
               <Text
@@ -156,10 +156,10 @@ const Payment = () => {
                 {/* {profile[0]?.name} */}
               </Text>
               <Text>
-                {/* <EmailIcon /> {profile[0]?.email} */}
+                {/* <AiOutlineMail /> {profile[0]?.email} */}
               </Text>
               <Text>
-                {/* <PhoneIcon /> {profile[0]?.mobile} */}
+                {/* <AiFillPhone /> {profile[0]?.mobile} */}
               </Text>
             </Stack>
           </Stack>
@@ -229,7 +229,7 @@ const Payment = () => {
             <Stack>
               <Box>
                 <Text fontWeight={"bold"} color={"blue.500"}>
-                  Shipping Address <CheckIcon color={"green.500"} />
+                  Shipping Address <AiOutlineCheck color={"green.500"} />
                 </Text>
                 <Box w={"70%"} textAlign="left">
                   {/* {`${profile[0]?.location?.street} ${
