@@ -19,9 +19,56 @@ import {
   InputGroup,
   InputLeftElement,
 } from "@chakra-ui/react";
+
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import logo from "./style/fascino.jpeg";
 
 export default function Navbar() {
+  const [user,setUser]=useState();
+  const [status,setStatus]=useState(false)
+//  const navigate= useNavigate();
+ 
+  const userLogout=()=>{
+    fetch("https://hungry-loincloth-calf.cyclic.app/users/logout",{
+     method:"PATCH",
+     headers:{
+       "Content-Type":"application/json",
+       "Authorization":localStorage.getItem("token")
+     },
+     body:JSON.stringify()
+    }).then(res=>res.json())
+     .then((res)=>{
+      localStorage.removeItem("token");
+      setStatus(false)
+      alert("you have been logged out");
+     }).catch(err=>console.log(err))
+ }
+
+  const getUser=()=>{
+    fetch("https://hungry-loincloth-calf.cyclic.app/users/get",{
+     method:"GET",
+     headers:{
+       "Content-Type":"application/json",
+       "Authorization":localStorage.getItem("token")
+     },
+     body:JSON.stringify()
+    }).then(res=>res.json())
+     .then((res)=>{
+        // console.log(res.data)
+        setUser(res)
+        // setStatus(false)
+     }).catch(err=>{
+      console.log(err)
+      // setStatus(false)
+    })
+ }
+
+ useEffect(()=>{
+  getUser()
+ },[])
+
+//  console.log(user)
   return (
     <>
       <Box bg={useColorModeValue("white.100", "white.900")} px={4}>
@@ -80,13 +127,13 @@ export default function Navbar() {
             </MenuList>
           </Menu>
           <Text>Become a Supplier</Text>
-          <Avatar
+          <Link to="/cart"><Avatar
             size={"sm"}
             src={
               "https://static.vecteezy.com/system/resources/previews/004/999/463/original/shopping-cart-icon-illustration-free-vector.jpg"
             }
           />
-
+          </Link>
           <Flex alignItems={"center"}>
             <Stack direction={"row"} spacing={7}>
               <Menu>
@@ -112,14 +159,15 @@ export default function Navbar() {
                   </Center>
                   <br />
                   <Center>
-                    <p>Username</p>
+                    {status?<p>{`${user?.firstName} ${user?.lastName}`}</p>:<p>welcome</p> }
                   </Center>
                   <br />
                   <MenuDivider />
                   <MenuItem>My Orders</MenuItem>
                   <MenuItem>Delete Account</MenuItem>
-                  <MenuItem>Admin</MenuItem>
-                  <MenuItem>Logout</MenuItem>
+                  <Link href="/admin"><MenuItem>Admin</MenuItem></Link>
+                  {status?<MenuItem onClick={userLogout}>Logout</MenuItem>:
+                  <Link href="/login"><MenuItem>Login</MenuItem></Link>}
                 </MenuList>
               </Menu>
             </Stack>
