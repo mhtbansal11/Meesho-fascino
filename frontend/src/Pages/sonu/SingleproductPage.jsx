@@ -41,6 +41,7 @@ export default function SingleProduct() {
   const side = useBreakpointValue({ base: "30%", md: "10px" });
   const [img, setImg] = useState([]);
   const [data, setData] = useState({});
+
   const { id } = useParams();
 
   const getData = async () => {
@@ -51,7 +52,7 @@ export default function SingleProduct() {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
-            Authorization: localStorage.getItem("token"),
+            "Authorization": localStorage.getItem("token"),
           },
           body: JSON.stringify(),
         }
