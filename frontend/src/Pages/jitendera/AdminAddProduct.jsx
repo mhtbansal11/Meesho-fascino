@@ -1,7 +1,7 @@
 import { Box,Input,Flex ,Button,Heading, Select} from '@chakra-ui/react'
 import axios from 'axios'
 import React ,{useState}from 'react'
-
+import { useToast } from '@chakra-ui/react'
 export const AdminAddProduct = () => {
   const [image, setimage] = useState([])
   const [title, settitle] = useState("")
@@ -12,9 +12,46 @@ export const AdminAddProduct = () => {
   const [type, settype] = useState("")
 console.log(category,type)
 
+const toast = useToast({
+  position: 'top',
+  title: 'Product Added Successfully',
+ 
+  containerStyle: {
+    width: '800px',
+    maxWidth: '100%',
+  },
+})
+
+
 const handleAdd=()=>{
+  const payload={
+    type,
+    category,
+    brand:name,
+    title,
+    discounted_price:discount,
+    strike_price:price,
+    images:image,
+
+  }
+  fetch(`https://hungry-loincloth-calf.cyclic.app/admin/add/product`,{
+    method:"POST",
+    headers:{
+      "Content-Type":"application/json",
+      "Authorization":localStorage.getItem("token")
+    },
+    body:JSON.stringify(payload)
+
+  }).then(res=>res.json())
+  .then((res)=>{
+     console.log(res)
+     toast({
+      containerStyle: {
+        border: '2px solid red',
+      },
+    })
+  }).catch(err=>console.log(err))
   
-  axios.post(`https://hungry-loincloth-calf.cyclic.app/admin/add/product`)
 }
 
 

@@ -3,9 +3,30 @@ import React from 'react'
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { AdminProductList } from './AdminProductList'
+import { useToast } from '@chakra-ui/react'
 export const Products = () => {
     let [products, setProducts] = useState([])
     let [isLoading,setIsLoading]=useState(false)
+
+    const toast = useToast({
+        position: 'top',
+        title: 'Product deleted Successfully',
+       
+        containerStyle: {
+          width: '800px',
+          maxWidth: '100%',
+        },
+      })
+      const toast1 = useToast({
+        position: 'top',
+        title: 'Product deleted Successfully',
+       
+        containerStyle: {
+          width: '800px',
+          maxWidth: '100%',
+        },
+      })
+
     const getData = () => {
         setIsLoading(true)
         axios.get(`https://hungry-loincloth-calf.cyclic.app/products`)
@@ -19,6 +40,7 @@ export const Products = () => {
     }
 
     const deleteProduct=(id)=>{
+        setIsLoading(true)
         fetch(`https://hungry-loincloth-calf.cyclic.app/admin/delete/product/${id}`,{
         method:"DELETE",
         headers:{
@@ -28,8 +50,18 @@ export const Products = () => {
         body:JSON.stringify()
        }).then(res=>res.json())
         .then((res)=>{
-           // console.log(res.data)
-            alert("product deleted")
+           console.log(res)
+
+           //res.msg==="Product has been deleted successfully"? alert("product deleted"):alert("cannot delete product")
+        //    console.log(`https://hungry-loincloth-calf.cyclic.app/admin/delete/product/${id}`)
+           getData()
+           setIsLoading(false)
+           toast({
+            containerStyle: {
+              
+              color:'green'
+            },
+          })
         }).catch(err=>{
             console.log(err)
             alert("cannot delete product")
@@ -37,6 +69,38 @@ export const Products = () => {
     }
 
 
+    const UpdateProduct=(id,discountprice,price)=>{
+        const payload={
+            discounted_price:discountprice,
+    strike_price:price,
+        }
+        setIsLoading(true)
+        fetch(`https://hungry-loincloth-calf.cyclic.app/admin/update/product/${id}`,{
+        method:"PATCH",
+        headers:{
+          "Content-Type":"application/json",
+          "Authorization":localStorage.getItem("token")
+        },
+        body:JSON.stringify(payload)
+       }).then(res=>res.json())
+        .then((res)=>{
+           console.log(res)
+
+           
+        //    console.log(`https://hungry-loincloth-calf.cyclic.app/admin/delete/product/${id}`)
+           getData()
+           setIsLoading(false)
+           toast1({
+            containerStyle: {
+             
+              color:'green'
+            },
+          })
+        }).catch(err=>{
+            console.log(err)
+            alert("cannot delete product")
+        })
+    }
 
     useEffect(() => {
         getData()
@@ -77,6 +141,7 @@ export const Products = () => {
                     <AdminProductList
                         {...el}
                         deleteProduct={deleteProduct}
+                        updateProduct={UpdateProduct}
                     />
                 ))
             
