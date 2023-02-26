@@ -1,6 +1,6 @@
 import React from "react";
 
-const ProductDetails = ({ rating, strike_price, title, type, images }) => {
+const ProductDetails = ({ rating, strike_price, title, type, images, _id }) => {
   return (
     <div
       style={{
@@ -14,7 +14,7 @@ const ProductDetails = ({ rating, strike_price, title, type, images }) => {
       <h1
         style={{
           fontSize: "15px",
-          fontWeight:"bold"
+          fontWeight: "bold",
         }}
       >
         {title}
