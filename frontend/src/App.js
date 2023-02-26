@@ -1,14 +1,10 @@
-import './App.css';
-
-import { AllRoutes } from './routes/AllRoutes';
-
+import "./App.css";
+import ProductPage from "./Pages/sonu/ProductPage";
 function App() {
   return (
     <div className="App">
-      <AllRoutes/>
-      
+      <ProductPage/>
     </div>
   );
 }
-
 export default App;
