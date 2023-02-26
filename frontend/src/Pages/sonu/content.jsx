@@ -37,7 +37,7 @@ const Content = () => {
       <div id="div2">
         <div id="leftDiv2">
           <img
-            class="img2"
+            className="img2"
             src="https://images.meesho.com/images/marketing/1631611172021.png"
             alt="fail"
           />
@@ -86,7 +86,7 @@ const Content = () => {
           </div>
         </div>
       </div>
-      <div class="reseller">
+      <div className="reseller">
         <div>
           <h2>Become a Reseller and</h2>
         </div>
@@ -96,7 +96,7 @@ const Content = () => {
             with Zero Investment
           </h1>
         </div>
-        <div class="android">
+        <div className="android">
           <img
             src="https://meesho.com/_next/static/images/playstore-a7dfd2afcd42f96d491912cbec2d6fa2.png"
             alt="android"
@@ -107,7 +107,7 @@ const Content = () => {
           />
         </div>
       </div>
-      <div class="last">
+      <div className="last">
         <div>
           <h1>Register as a Meesho Supplier</h1>
           <h2>Sell your products to crores of customers at 0% commission</h2>

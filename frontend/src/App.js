@@ -1,9 +1,9 @@
 import "./App.css";
-import ProductPage from "./Pages/sonu/ProductPage";
+import { AllRoutes } from "./routes/AllRoutes";
 function App() {
   return (
     <div className="App">
-      <ProductPage/>
+      <AllRoutes/>
     </div>
   );
 }
