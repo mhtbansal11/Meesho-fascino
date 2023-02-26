@@ -37,6 +37,7 @@ export default function SingleProduct() {
   const side = useBreakpointValue({ base: "30%", md: "10px" });
   const [img, setImg] = useState([]);
   const [data, setData] = useState({});
+
   const { id } = useParams();
   // console.log(id);
   const getData = async () => {
@@ -47,7 +48,7 @@ export default function SingleProduct() {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
-            Authorization: localStorage.getItem("token"),
+            "Authorization": localStorage.getItem("token"),
           },
           body: JSON.stringify(),
         }
@@ -61,6 +62,7 @@ export default function SingleProduct() {
     }
   };
   // console.log(52,data);
+
   useEffect(() => {
     getData();
   }, []);
