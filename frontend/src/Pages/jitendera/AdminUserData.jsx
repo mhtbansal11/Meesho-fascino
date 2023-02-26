@@ -4,10 +4,17 @@ import axios from 'axios'
 export const AdminUserData = () => {
     const [user, setuser] = useState([])
     const getUser=()=>{
-        axios.get(`https://hungry-loincloth-calf.cyclic.app/admin/user`)
+       fetch("https://hungry-loincloth-calf.cyclic.app/admin/user",{
+        method:"GET",
+        headers:{
+          "Content-Type":"application/json",
+          "Authorization":localStorage.getItem("token")
+        },
+        body:JSON.stringify()
+       }).then(res=>res.json())
         .then((res)=>{
            // console.log(res.data)
-            setuser(res.data)
+            setuser(res)
         }).catch(err=>console.log(err))
     }
 

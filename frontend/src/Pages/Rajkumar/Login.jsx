@@ -22,7 +22,7 @@ const Login = () => {
   const [user, setuser] = useState(initialsate)
   
   const [tohome, settohome] = useState(false)
-  const { settoken, userdetails, setuserdetails, setlogout } = useContext(Globalcontext)
+  // const { settoken, userdetails, setuserdetails, setlogout } = useContext(Globalcontext)
   const toast = useToast()
   const navigate = useNavigate();
   const [loading,setLoading]=useState("true")
@@ -87,7 +87,7 @@ const Login = () => {
           username: res._tokenResponse.displayName,
           email: res._tokenResponse.email
         }
-        setuserdetails(userdetailsfromgoogle)
+        // setuserdetails(userdetailsfromgoogle)
         toast({
           title: `Login successful`,
           position: 'top',

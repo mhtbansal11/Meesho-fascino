@@ -19,10 +19,21 @@ export const Products = () => {
     }
 
     const deleteProduct=(id)=>{
-        axios.delete(`https://hungry-loincloth-calf.cyclic.app/admin/delete/product/${id}`)
+        fetch(`https://hungry-loincloth-calf.cyclic.app/admin/delete/product/${id}`,{
+        method:"DELETE",
+        headers:{
+          "Content-Type":"application/json",
+          "Authorization":localStorage.getItem("token")
+        },
+        body:JSON.stringify()
+       }).then(res=>res.json())
         .then((res)=>{
-            console.log(res.data)
-        }).catch(err=>console.log(err))
+           // console.log(res.data)
+            alert("product deleted")
+        }).catch(err=>{
+            console.log(err)
+            alert("cannot delete product")
+        })
     }
 
 
