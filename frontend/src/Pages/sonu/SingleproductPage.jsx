@@ -7,8 +7,6 @@ import {
   Container,
   Stack,
   Text,
-  Image,
-  Flex,
   VStack,
   Button,
   Heading,
@@ -21,8 +19,6 @@ import {
   IconButton,
 } from "@chakra-ui/react";
 import { useParams } from "react-router-dom";
-import axios from "axios";
-
 const settings = {
   dots: true,
   arrows: true,
@@ -39,14 +35,14 @@ export default function SingleProduct() {
   const [slider, setSlider] = React.useState(null);
   const top = useBreakpointValue({ base: "90%", md: "50%" });
   const side = useBreakpointValue({ base: "30%", md: "10px" });
-
+  const [img, setImg] = useState([]);
   const [data, setData] = useState({});
-  const { _id } = useParams();
-  console.log(_id);
-  const getData = async (id=_id) => {
 
+  const { id } = useParams();
+  // console.log(id);
+  const getData = async () => {
     try {
-      let r =await fetch(
+      let r = await fetch(
         `https://hungry-loincloth-calf.cyclic.app/users/product/${id}`,
         {
           method: "GET",
@@ -58,13 +54,15 @@ export default function SingleProduct() {
         }
       );
       let d = await r.json();
-      setData(d)
-      console.log(data);
+      setData(d);
+      console.log(d.images);
+      setImg(d.images);
     } catch (error) {
-      console.log(error.message);
+      console.log(error);
     }
   };
- 
+  // console.log(52,data);
+
   useEffect(() => {
     getData();
   }, []);
@@ -79,20 +77,9 @@ export default function SingleProduct() {
     strike_price,
     title,
     type,
-    images,
   } = data;
 
-  const cards = [
-    images[0],
-    images[1],
-    images[2],
-    images[3],
-    images[4],
-    images[5],
-    images[6],
-    images[7],
-    images[8],
-  ];
+  const cards = [];
   return (
     <>
       <Container maxW={"7xl"}>
@@ -102,7 +89,6 @@ export default function SingleProduct() {
           py={{ base: 18, md: 24 }}
         >
           <Box
-            background={"lightgray"}
             position={"relative"}
             height={"600px"}
             width={"full"}
@@ -150,10 +136,10 @@ export default function SingleProduct() {
             </IconButton>
             {/* Slider */}
             <Slider {...settings} ref={(slider) => setSlider(slider)}>
-              {cards.map((url, index) => (
+              {img?.map((url, index) => (
                 <Box
                   key={index}
-                  height={"3xl"}
+                  height={"6xl"}
                   position="relative"
                   backgroundPosition="center"
                   backgroundRepeat="no-repeat"
@@ -171,14 +157,14 @@ export default function SingleProduct() {
                 fontWeight={600}
                 fontSize={{ base: "2xl", sm: "4xl", lg: "5xl" }}
               >
-                {"name"}
+                {title}
               </Heading>
               <Text
                 color={useColorModeValue("gray.900", "gray.400")}
                 fontWeight={300}
                 fontSize={"2xl"}
               >
-                ${"cost"}
+                ${strike_price}
               </Text>
             </Box>
 
@@ -197,7 +183,7 @@ export default function SingleProduct() {
                   fontSize={"2xl"}
                   fontWeight={"300"}
                 >
-                  {"category"}
+                  {category}
                 </Text>
                 <Text fontSize={"lg"}>{"description"}</Text>
               </VStack>
@@ -218,31 +204,49 @@ export default function SingleProduct() {
                     <Text color={"blue"} as={"span"} fontWeight={"bold"}>
                       Product Name:
                     </Text>{" "}
-                    {"name"}
+                    {title}
                   </ListItem>
                   <ListItem>
                     <Text color={"blue"} as={"span"} fontWeight={"bold"}>
-                      Price:
+                      MRP:
                     </Text>{" "}
-                    {"cost"}Rs
+                    {strike_price}Rs
+                  </ListItem>
+                  <ListItem>
+                    <Text color={"blue"} as={"span"} fontWeight={"bold"}>
+                      Discounted_Price:
+                    </Text>{" "}
+                    {discounted_price}Rs
                   </ListItem>
                   <ListItem>
                     <Text color={"blue"} as={"span"} fontWeight={"bold"}>
                       Catogery:
                     </Text>{" "}
-                    {"cat"}
+                    {category}
                   </ListItem>
                   <ListItem>
                     <Text color={"blue"} as={"span"} fontWeight={"bold"}>
-                      Description:
+                      brand:
                     </Text>{" "}
-                    {"description"}
+                    {brand}
                   </ListItem>
                   <ListItem>
                     <Text color={"blue"} as={"span"} fontWeight={"bold"}>
                       Rating:
                     </Text>{" "}
-                    {"Rating"}
+                    {rating}
+                  </ListItem>
+                  <ListItem>
+                    <Text color={"blue"} as={"span"} fontWeight={"bold"}>
+                      rating_count:
+                    </Text>{" "}
+                    {rating_count}
+                  </ListItem>
+                  <ListItem>
+                    <Text color={"blue"} as={"span"} fontWeight={"bold"}>
+                      Type:
+                    </Text>{" "}
+                    {type}
                   </ListItem>
                 </List>
               </Box>
@@ -279,3 +283,5 @@ export default function SingleProduct() {
     </>
   );
 }
+
+// const [slider, setSlider] = React.useState<Slider | null>(null);
