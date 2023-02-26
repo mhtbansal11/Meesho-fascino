@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import { AdminAddProduct } from "../Pages/jitendera/AdminAddProduct";
@@ -13,6 +14,7 @@ import Checkout from "../Pages/Avinash/Checkout";
 import Payment from "../Pages/Avinash/Payment";
 import SingleproductPage from "../Pages/sonu/SingleproductPage";
 import ProductPage from "../Pages/sonu/ProductPage";
+
 
 export const AllRoutes = () => {
   return (
@@ -30,6 +32,7 @@ export const AllRoutes = () => {
       <Route path="/checkout" element={<Checkout />} />
       <Route path="/payment" element={<Payment />} />
       <Route path='/productpage/:id' element={<SingleproductPage/>}/>
+
     </Routes>
   );
 };
