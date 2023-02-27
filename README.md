@@ -19,6 +19,14 @@ Backend URL:- https://hungry-loincloth-calf.cyclic.app/
  - Filtering in Admin Page
  - Admin Dashboard which allows admin to add, edit, delete and disable/enable products. 
  
+ # Technology
+
+
+- **Client:** HTML, CSS, JS, React, Redux, ChakraUI, Firebase, NodeJS.
+
+- **Server:** Vercel and Cyclic
+
+
  ## Group Members
 
  - Mohit bansal
