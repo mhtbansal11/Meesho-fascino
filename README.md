@@ -40,7 +40,7 @@ Backend URL:- https://hungry-loincloth-calf.cyclic.app/
 
 ## Screenshots
 
-#1. Landing Page:
+# 1. Landing Page:
 ![Screenshot 2023-02-27 124634](https://user-images.githubusercontent.com/103637119/221498640-67982356-65b3-4565-9fa2-015cea37cc3e.png)
 
 This is the first page of this website and it has dynamic navbar which is available in all other pages as well because it is exported
