@@ -2,8 +2,7 @@
 
 
 
-An e-commerce website for ordering fashion products, clothing etc.
-
+An e-commerce website for ordering fashion products, clothing etc.And it is a social commerce platform that undertakes retail distribution, enabling small retail merchants to connect and sell their products effectively via social media channels.
 Live: https://meesho-fascino.vercel.app/
 Backend URL:- https://hungry-loincloth-calf.cyclic.app/
 
