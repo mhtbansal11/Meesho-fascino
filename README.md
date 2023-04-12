@@ -7,7 +7,7 @@ An e-commerce website for ordering fashion products, clothing etc.And it is a so
 
 
 Live: https://meesho-fascino.vercel.app/
-Backend URL:- https://hungry-loincloth-calf.cyclic.app/
+Backend URL:- https://dark-gray-alligator-kit.cyclic.app/
 
 ## Features
 
