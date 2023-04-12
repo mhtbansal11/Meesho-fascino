@@ -19,9 +19,10 @@ const ProductDetails = ({ rating, strike_price, title, type, images, _id }) => {
       >
         {title}
       </h1>
-      <p>Price : {strike_price}</p>
+      <p style={{color:"green"}}>Price : {strike_price}/-</p>
       <p> Rating : {rating}</p>
       <p>{type}</p>
+      <button style={{color:"white",backgroundColor:"green",width:"100px", borderRadius:"10px"}}>Buy Now</button>
     </div>
     </Link>
   );

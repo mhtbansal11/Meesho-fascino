@@ -67,7 +67,7 @@ const navigate=useNavigate()
     //         })
     // }
     const registeruser=()=>{
-        fetch(`https://hungry-loincloth-calf.cyclic.app/register`,{
+        fetch(`https://dark-gray-alligator-kit.cyclic.app/register`,{
             method:"POST",
             headers:{
                 "Content-Type":"application/json",
@@ -77,12 +77,13 @@ const navigate=useNavigate()
           .then(res=>{
             toast({
                 title: `${res.msg}`,
-                
                 status: res.msg==="You have been registered successfully"?"success":"error",
                 duration: 2000,
                 isClosable: true,
               })
-              navigate("/login");
+              if(res.msg==="You have been registered successfully"){
+                navigate("/login");
+              }
           }).catch(err=>{
             toast({
                 title: `${err}`,

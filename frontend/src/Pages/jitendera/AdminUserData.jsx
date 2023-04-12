@@ -7,7 +7,7 @@ export const AdminUserData = () => {
     let [isLoading,setIsLoading]=useState(false)
     const getUser=()=>{
       setIsLoading(true)
-       fetch("https://hungry-loincloth-calf.cyclic.app/admin/user",{
+       fetch("https://dark-gray-alligator-kit.cyclic.app/admin/user",{
         method:"GET",
         headers:{
           "Content-Type":"application/json",
@@ -24,7 +24,7 @@ export const AdminUserData = () => {
 
 
   //   const deleteProduct=(id)=>{
-  //     fetch(`https://hungry-loincloth-calf.cyclic.app/admin/delete/product/${id}`,{
+  //     fetch(`https://dark-gray-alligator-kit.cyclic.app/admin/delete/product/${id}`,{
   //     method:"DELETE",
   //     headers:{
   //       "Content-Type":"application/json",
@@ -36,7 +36,7 @@ export const AdminUserData = () => {
   //        console.log(res)
 
   //        res.msg==="Product has been deleted successfully"? alert("product deleted"):alert("cannot delete product")
-  //     //    console.log(`https://hungry-loincloth-calf.cyclic.app/admin/delete/product/${id}`)
+  //     //    console.log(`https://dark-gray-alligator-kit.cyclic.app/admin/delete/product/${id}`)
   //        getData()
   //     }).catch(err=>{
   //         console.log(err)

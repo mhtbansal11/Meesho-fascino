@@ -62,7 +62,7 @@ const navigate=useNavigate()
   })
 
   const handlelogout=()=>{
-    fetch(`https://hungry-loincloth-calf.cyclic.app/users/logout`,{
+    fetch(`https://dark-gray-alligator-kit.cyclic.app/users/logout`,{
         method:"PATCH",
         headers:{
           "Content-Type":"application/json",

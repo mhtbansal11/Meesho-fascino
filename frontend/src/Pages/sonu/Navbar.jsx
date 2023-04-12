@@ -18,6 +18,7 @@ import {
   Link,
   InputGroup,
   InputLeftElement,
+  HStack,
 } from "@chakra-ui/react";
 
 import { useEffect, useState } from "react";
@@ -28,10 +29,10 @@ import logo from "./style/fascino.jpeg";
 export default function Navbar() {
   const [user,setUser]=useState();
   const [status,setStatus]=useState(false)
-//  const navigate= useNavigate();
+ const navigate= useNavigate();
  
   const userLogout=()=>{
-    fetch("https://hungry-loincloth-calf.cyclic.app/users/logout",{
+    fetch("https://dark-gray-alligator-kit.cyclic.app/users/logout",{
      method:"PATCH",
      headers:{
        "Content-Type":"application/json",
@@ -47,7 +48,7 @@ export default function Navbar() {
  }
 
   const getUser=()=>{
-    fetch("https://hungry-loincloth-calf.cyclic.app/users/get",{
+    fetch("https://dark-gray-alligator-kit.cyclic.app/users/get",{
      method:"GET",
      headers:{
        "Content-Type":"application/json",
@@ -58,16 +59,20 @@ export default function Navbar() {
      .then((res)=>{
         // console.log(res.data)
         setUser(res)
-        // setStatus(false)
+        setStatus(true)
      }).catch(err=>{
       console.log(err)
-      // setStatus(false)
+      setStatus(false)
     })
  }
 
  useEffect(()=>{
   getUser()
  },[])
+
+ const handleAdmin=()=>{
+  user.is_admin?navigate("/admin"):alert("You are not authorized for Admin!")
+ }
 
 //  console.log(user)
   return (
@@ -128,12 +133,15 @@ export default function Navbar() {
             </MenuList>
           </Menu>
           <Text>Become a Supplier</Text>
-          <Link href="/cart"><Avatar
+          <Link href="/cart">
+          <HStack>
+            {/* <Box fontWeight={"bold"} mr={-3} h={5} w={5} rounded={"full"}  >1</Box> */}
+            <Avatar
             size={"sm"}
             src={
               "https://static.vecteezy.com/system/resources/previews/004/999/463/original/shopping-cart-icon-illustration-free-vector.jpg"
             }
-          />
+          /></HStack>
           </Link>
           <Flex alignItems={"center"}>
             <Stack direction={"row"} spacing={7}>
@@ -166,7 +174,7 @@ export default function Navbar() {
                   <MenuDivider />
                   <MenuItem>My Orders</MenuItem>
                   <MenuItem>Delete Account</MenuItem>
-                  <Link href="/admin"><MenuItem>Admin</MenuItem></Link>
+                  <MenuItem onClick={handleAdmin}>Admin</MenuItem>
                   {status?<MenuItem onClick={userLogout}>Logout</MenuItem>:
                   <Link href="/login"><MenuItem>Login</MenuItem></Link>}
                 </MenuList>

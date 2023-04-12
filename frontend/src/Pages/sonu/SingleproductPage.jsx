@@ -19,7 +19,7 @@ import {
   IconButton,
   useToast,
 } from "@chakra-ui/react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Navbar from "./Navbar";
 import Footer from "./footer";
 const settings = {
@@ -35,6 +35,7 @@ const settings = {
 };
 
 export default function SingleProduct() {
+  const navigate=useNavigate()
   const Toast = useToast();
   const [slider, setSlider] = React.useState(null);
   const top = useBreakpointValue({ base: "90%", md: "50%" });
@@ -43,11 +44,12 @@ export default function SingleProduct() {
   const [data, setData] = useState({});
 
   const { id } = useParams();
+  console.log(id)
 
   const getData = async () => {
     try {
       let r = await fetch(
-        `https://hungry-loincloth-calf.cyclic.app/users/product/${id}`,
+        `https://dark-gray-alligator-kit.cyclic.app/products/${id}`,
         {
           method: "GET",
           headers: {
@@ -69,7 +71,7 @@ export default function SingleProduct() {
     console.log("clicked");
     try {
       let r = await fetch(
-        `https://hungry-loincloth-calf.cyclic.app/users/cart_product/add/${id}`,
+        `https://dark-gray-alligator-kit.cyclic.app/users/cart_product/add/${id}`,
         {
           method: "POST",
           headers: {
@@ -86,6 +88,9 @@ export default function SingleProduct() {
         duration: 2000,
         isClosable: true,
       });
+      if(d.msg!=="Product added to cart"){
+        navigate("/login")
+      }
     } catch (error) {
       console.log(error);
       Toast({
@@ -237,15 +242,15 @@ export default function SingleProduct() {
                   Product Details
                 </Text>
 
-                <List spacing={2}>
+                <List spacing={2} textAlign={"left"} pl={10}>
                   <ListItem>
-                    <Text color={"blue"} as={"span"} fontWeight={"bold"}>
+                    <Text  color={"blue"} as={"span"} fontWeight={"bold"}>
                       Product Name:
                     </Text>{" "}
                     {title}
                   </ListItem>
                   <ListItem>
-                    <Text color={"blue"} as={"span"} fontWeight={"bold"}>
+                    <Text  color={"blue"} as={"span"} fontWeight={"bold"}>
                       MRP:
                     </Text>{" "}
                     {strike_price}Rs
@@ -297,8 +302,9 @@ export default function SingleProduct() {
               mt={8}
               size={"lg"}
               py={"7"}
-              bg={useColorModeValue("gray.900", "gray.50")}
-              color={useColorModeValue("green", "gray.900")}
+              borderRadius={10}
+              bg={useColorModeValue("blue.900", "blue.50")}
+              color={useColorModeValue("white", "white")}
               textTransform={"uppercase"}
               _hover={{
                 transform: "translateY(2px)",

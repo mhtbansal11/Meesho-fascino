@@ -34,7 +34,7 @@ const handleAdd=()=>{
     images:image,
 
   }
-  fetch(`https://hungry-loincloth-calf.cyclic.app/admin/add/product`,{
+  fetch(`https://dark-gray-alligator-kit.cyclic.app/admin/add/product`,{
     method:"POST",
     headers:{
       "Content-Type":"application/json",

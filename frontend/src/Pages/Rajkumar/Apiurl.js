@@ -1,1 +1,1 @@
-export const apiurl='https://hungry-loincloth-calf.cyclic.app/'
+export const apiurl='https://dark-gray-alligator-kit.cyclic.app/'

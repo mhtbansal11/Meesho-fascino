@@ -33,7 +33,7 @@ const Checkout = () => {
 
   const addAddress = async () => {
     setProgress(true);
-    fetch(`https://hungry-loincloth-calf.cyclic.app/users/add/location`, {
+    fetch(`https://dark-gray-alligator-kit.cyclic.app/users/add/location`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -73,7 +73,6 @@ const Checkout = () => {
     <>
       <Navbar />
       <Box
-        my={{ lg: "150px", md: "100px", sm: "70px" }}
         borderWidth="1px"
         rounded="lg"
         shadow="xl"

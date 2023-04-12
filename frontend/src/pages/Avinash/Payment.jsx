@@ -28,6 +28,8 @@ import {
 import React, { useEffect, useState } from "react";
 import { BsCreditCard2FrontFill, BsGlobe2 } from "react-icons/bs";
 import { Link } from "react-router-dom";
+import Navbar from "../sonu/Navbar";
+import Footer from "../sonu/footer";
 
 // type userDetail = {
 //   firstName:string,
@@ -62,7 +64,7 @@ const Payment = () => {
   };
 
   const getUserDetails = () => {
-    fetch(`https://hungry-loincloth-calf.cyclic.app/users/get`, {
+    fetch(`https://dark-gray-alligator-kit.cyclic.app/users/get`, {
       method: "GET",
       headers: {
         "Content-type": "application/json",
@@ -89,7 +91,7 @@ const Payment = () => {
 
   const getCartProducts=()=>{
     setLoading(true);
-    fetch("https://hungry-loincloth-calf.cyclic.app/users/cart_product",{
+    fetch("https://dark-gray-alligator-kit.cyclic.app/users/cart_product",{
         method:"GET",
         headers:{
             "Content-type":"application/json",
@@ -151,9 +153,9 @@ const Payment = () => {
     return (
       <>
         <Box w={{ base: "100%", md: "50%" }} m="auto">
-          <Heading color={"green.500"}>Products Ordered</Heading>
+          <Heading color={"green.500"}>Products Ordered Successfully</Heading>
           <Image src="https://i.gifer.com/origin/41/41340ab1a4529c7dd753f03268087e08.gif" />
-          <Link to={"/"}>
+          <Link to="/">
             <Button>Go To Home</Button>
           </Link>
         </Box>
@@ -170,6 +172,7 @@ const Payment = () => {
     );
   }
   return (
+    <><Navbar/>
     <Box
       w={{ base: "full", lg: "75%" }}
       m={"auto"}
@@ -177,7 +180,7 @@ const Payment = () => {
       mb="50px"
       borderRadius={10}
     >
-      {/* <Navbar /> */}
+      
       <Heading borderRadius={10} bg="blue.500" p={2} color={"white"} mb={10}>
         Payment
       </Heading>
@@ -191,6 +194,7 @@ const Payment = () => {
           <Skeleton height="20px" />
         </Stack>
       ) : (
+        <>
         <Grid
           templateRows={{ base: "1fr 2fr 1fr 1fr", lg: "repeat(3,1fr)" }}
           templateColumns={{ base: "100%", md: "100%", lg: "repeat(3, 1fr)" }}
@@ -199,7 +203,7 @@ const Payment = () => {
           <GridItem
             colSpan={{ base: 1, lg: 2 }}
             rowSpan={1}
-            boxShadow="rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
+             boxShadow= "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px"
             borderRadius={10}
           >
             <Stack p={5} color={"gray.500"}>
@@ -212,11 +216,12 @@ const Payment = () => {
                   fontWeight={"bold"}
                   fontSize={"xl"}
                   fontStyle={"italic"}
+                  textAlign="left"
                 >
                   {userDetails?.firstName} {userDetails?.lastName}
                 </Text>
-                <Text><AiOutlineMail /> {userDetails?.email}</Text>
-                <Text><AiFillPhone /> {userDetails?.mobile}</Text>
+                <HStack><AiOutlineMail /><Text textAlign="left"> {userDetails?.email}</Text></HStack>
+                <HStack><AiFillPhone /><Text textAlign="left"> {userDetails?.mobile}</Text></HStack>
               </Stack>
             </Stack>
             {/* --------------------------------------------------------------------------------------------> */}
@@ -224,7 +229,7 @@ const Payment = () => {
           <GridItem
             colSpan={{ base: 1, lg: 1 }}
             rowSpan={{ base: 1, lg: 3 }}
-            boxShadow="rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
+            boxShadow= {"rgba(100, 100, 111, 0.2) 0px 7px 29px 0px"}
             borderRadius={10}
           >
             <Stack>
@@ -278,7 +283,7 @@ const Payment = () => {
           <GridItem
             colSpan={{ base: 1, lg: 2 }}
             rowSpan={1}
-            boxShadow="rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
+             boxShadow="rgba(100, 100, 111, 0.2) 0px 7px 29px 0px"
             borderRadius={10}
           >
             <Flex color={"gray.500"} justifyContent={"space-between"} p={5}>
@@ -307,7 +312,7 @@ const Payment = () => {
           <GridItem
             colSpan={{ base: 1, lg: 2 }}
             rowSpan={1}
-            boxShadow="rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset"
+             boxShadow= "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px"
             borderRadius={10}
           >
             <Box h={10} p={2}>
@@ -455,8 +460,12 @@ const Payment = () => {
             </Stack>
           </GridItem>
         </Grid>
+        </>
       )}
+      
     </Box>
+      <Footer/>
+    </>
   );
 };
 

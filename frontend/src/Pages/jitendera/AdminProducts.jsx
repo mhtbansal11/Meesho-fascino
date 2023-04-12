@@ -27,9 +27,19 @@ export const Products = () => {
         },
       })
 
+      const toast2 = useToast({
+        position: 'top',
+        title: 'Product updated Successfully',
+       
+        containerStyle: {
+          width: '800px',
+          maxWidth: '100%',
+        },
+      })
+
     const getData = () => {
         setIsLoading(true)
-        axios.get(`https://hungry-loincloth-calf.cyclic.app/products`)
+        axios.get(`https://dark-gray-alligator-kit.cyclic.app/products`)
             .then((res) => {
                 setIsLoading(false)
                 setProducts(res.data)
@@ -41,7 +51,7 @@ export const Products = () => {
 
     const deleteProduct=(id)=>{
         setIsLoading(true)
-        fetch(`https://hungry-loincloth-calf.cyclic.app/admin/delete/product/${id}`,{
+        fetch(`https://dark-gray-alligator-kit.cyclic.app/admin/delete/product/${id}`,{
         method:"DELETE",
         headers:{
           "Content-Type":"application/json",
@@ -53,7 +63,7 @@ export const Products = () => {
            console.log(res)
 
            //res.msg==="Product has been deleted successfully"? alert("product deleted"):alert("cannot delete product")
-        //    console.log(`https://hungry-loincloth-calf.cyclic.app/admin/delete/product/${id}`)
+        //    console.log(`https://dark-gray-alligator-kit.cyclic.app/admin/delete/product/${id}`)
            getData()
            setIsLoading(false)
            toast({
@@ -75,7 +85,7 @@ export const Products = () => {
     strike_price:price,
         }
         setIsLoading(true)
-        fetch(`https://hungry-loincloth-calf.cyclic.app/admin/update/product/${id}`,{
+        fetch(`https://dark-gray-alligator-kit.cyclic.app/admin/update/product/${id}`,{
         method:"PATCH",
         headers:{
           "Content-Type":"application/json",
@@ -87,10 +97,10 @@ export const Products = () => {
            console.log(res)
 
            
-        //    console.log(`https://hungry-loincloth-calf.cyclic.app/admin/delete/product/${id}`)
+        //    console.log(`https://dark-gray-alligator-kit.cyclic.app/admin/delete/product/${id}`)
            getData()
            setIsLoading(false)
-           toast1({
+           toast2({
             containerStyle: {
              
               color:'green'
@@ -98,7 +108,7 @@ export const Products = () => {
           })
         }).catch(err=>{
             console.log(err)
-            alert("cannot delete product")
+            alert("cannot update product")
         })
     }
 

@@ -5,11 +5,12 @@ import Navbar from "./Navbar";
 
 const ProductPage = () => {
   const [data, setData] = useState([]);
- 
+//   const params=useParams()
+//  console.log(params)
   const getData = async () => {
     try {
       let r =await fetch(
-        `https://hungry-loincloth-calf.cyclic.app/users/products/filter`,
+        `https://dark-gray-alligator-kit.cyclic.app/products/filter`,
         {
           method: "GET",
           headers: {
@@ -63,12 +64,15 @@ const ProductPage = () => {
               >
                 {el.title}
               </h1>
-              <p>Price : {el.strike_price}</p>
+              <p style={{color:"green"}}>Price : {el.strike_price}/-</p>
               <p> Rating : {el.rating}</p>
               <p>{el.type}</p>
               <button
                 style={{
-                  background: "red",
+                  background: "green",
+                  color:"white",
+                  width:"100px",
+                  borderRadius:"10px"
                 }}
               >
                 Buy Now
