@@ -6,7 +6,7 @@ const Product = () => {
   const [data, setData] = useState([]);
   const getData = async () => {
     let r = await axios.get(
-      "https://hungry-loincloth-calf.cyclic.app/products"
+      "https://dark-gray-alligator-kit.cyclic.app/products"
     );
     setData(r.data);
   };
@@ -25,7 +25,7 @@ const Product = () => {
         gap: "20px",
       }}
     >
-      {data.map((el) => {
+      {data.slice(0,25).map((el) => {
         return (
           <div>
             <CardDetails key={el._id} {...el} />

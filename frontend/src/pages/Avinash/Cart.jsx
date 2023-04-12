@@ -66,7 +66,7 @@ const Cart = () => {
   };
 
   const getCartProducts = () => {
-    fetch("https://hungry-loincloth-calf.cyclic.app/users/cart_product", {
+    fetch("https://dark-gray-alligator-kit.cyclic.app/users/cart_product", {
       method: "GET",
       headers: {
         "Content-type": "application/json",
@@ -91,7 +91,7 @@ const Cart = () => {
       val = 1;
     }
     fetch(
-      `https://hungry-loincloth-calf.cyclic.app/users/cart_product/update/${id}`,
+      `https://dark-gray-alligator-kit.cyclic.app/users/cart_product/update/${id}`,
       {
         method: "PATCH",
         headers: {
@@ -111,7 +111,7 @@ const Cart = () => {
 
   const handleDeleteCart = (id) => {
     fetch(
-      `https://hungry-loincloth-calf.cyclic.app/users/cart_product/delete/${id}`,
+      `https://dark-gray-alligator-kit.cyclic.app/users/cart_product/delete/${id}`,
       {
         method: "DELETE",
         headers: {
@@ -128,7 +128,7 @@ const Cart = () => {
   };
 
   // const handleOrderSummery = (userID) => {
-  //   fetch(`https://hungry-loincloth-calf.cyclic.app/users/order/add`, {
+  //   fetch(`https://dark-gray-alligator-kit.cyclic.app/users/order/add`, {
   //     method: "POST",
   //     headers: {
   //       Authorization: localStorage.getItem("token"),
@@ -149,7 +149,7 @@ const Cart = () => {
   // };
 
   const handleClearCart = (id) => {
-    fetch(`https://hungry-loincloth-calf.cyclic.app/users/clear_cart`, {
+    fetch(`https://dark-gray-alligator-kit.cyclic.app/users/clear_cart`, {
       method: "DELETE",
       headers: {
         Authorization: localStorage.getItem("token"),
@@ -206,7 +206,7 @@ const Cart = () => {
               >
                 Looks like you have no items in your shopping cart
               </Text>
-              <Link to="/">
+              <Link href="/">
                 <Button
                   color={"white"}
                   mt={10}

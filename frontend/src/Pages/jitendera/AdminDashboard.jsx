@@ -8,7 +8,7 @@ export const AdminDashboard = () => {
   let [products, setProducts] = useState([])
 
     const getData = () => {
-        axios.get(`https://hungry-loincloth-calf.cyclic.app/products`)
+        axios.get(`https://dark-gray-alligator-kit.cyclic.app/products`)
             .then((res) => {
                 setProducts(res.data)
             }).catch((err) => {

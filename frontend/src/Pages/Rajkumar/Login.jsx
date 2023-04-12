@@ -34,7 +34,7 @@ const Login = () => {
 
   
     const loginuser=()=>{
-      fetch(`https://hungry-loincloth-calf.cyclic.app/login`,{
+      fetch(`https://dark-gray-alligator-kit.cyclic.app/login`,{
           method:"POST",
           headers:{
               "Content-Type":"application/json",
@@ -43,7 +43,7 @@ const Login = () => {
           body:JSON.stringify(user)
       }).then(res=>res.json())
         .then(res=>{
-          localStorage.setItem("token",res.token);
+          
           setLoading("false")
           toast({
               title: `${res.msg}`,
@@ -51,7 +51,10 @@ const Login = () => {
               duration: 2000,
               isClosable: true,
             })
-            navigate("/");
+            if(res.msg==="Login Successfull"){
+              localStorage.setItem("token",res.token);
+              navigate("/");
+            }
         }).catch(err=>{
           toast({
               title: `${err.message}`,

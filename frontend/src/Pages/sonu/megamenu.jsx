@@ -348,7 +348,7 @@ const NAV_ITEMS = [
   },
   {
     label: "Women Western",
-    href: "#",
+    href: "/productpage?type=Womens",
     children: [
       {
         label: "Top Wear",
@@ -383,7 +383,7 @@ const NAV_ITEMS = [
   },
   {
     label: "Men",
-    href: "#",
+    href: "/productpage?type=Mens",
     children: [
       {
         label: "Top Wear",
@@ -437,7 +437,7 @@ const NAV_ITEMS = [
   },
   {
     label: "Kids",
-    href: "#",
+    href: "/productpage?type=Child",
     children: [
       {
         label: "Boys & Girls 2+ Years",

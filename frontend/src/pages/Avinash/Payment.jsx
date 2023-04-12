@@ -64,7 +64,7 @@ const Payment = () => {
   };
 
   const getUserDetails = () => {
-    fetch(`https://hungry-loincloth-calf.cyclic.app/users/get`, {
+    fetch(`https://dark-gray-alligator-kit.cyclic.app/users/get`, {
       method: "GET",
       headers: {
         "Content-type": "application/json",
@@ -91,7 +91,7 @@ const Payment = () => {
 
   const getCartProducts=()=>{
     setLoading(true);
-    fetch("https://hungry-loincloth-calf.cyclic.app/users/cart_product",{
+    fetch("https://dark-gray-alligator-kit.cyclic.app/users/cart_product",{
         method:"GET",
         headers:{
             "Content-type":"application/json",
@@ -155,7 +155,7 @@ const Payment = () => {
         <Box w={{ base: "100%", md: "50%" }} m="auto">
           <Heading color={"green.500"}>Products Ordered Successfully</Heading>
           <Image src="https://i.gifer.com/origin/41/41340ab1a4529c7dd753f03268087e08.gif" />
-          <Link href={"/"}>
+          <Link to="/">
             <Button>Go To Home</Button>
           </Link>
         </Box>
